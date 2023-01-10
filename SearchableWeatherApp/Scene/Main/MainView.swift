@@ -10,6 +10,7 @@ import UIKit
 class MainView: BaseView {
     
     let searchBar: UISearchController = {
+        
        let bar = UISearchController()
         
         //CancelButton Color
@@ -26,26 +27,36 @@ class MainView: BaseView {
         magnifyingIconView.tintColor = .systemGray2
         
         return bar
+        
     }()
     
-    let label: UILabel = {
-       let label = UILabel()
-        label.text = "test"
-        label.textAlignment = .center
-        return label
+    let collectionView: UICollectionView = {
+        
+        let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().getLayout())
+        view.backgroundColor = .clear
+        
+        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
+
+        return view
+        
     }()
     
     override internal func configure() {
+        
         backgroundColor = UIColor(named: "BackgroundColor")
-        [label].forEach {
+        
+        [collectionView].forEach {
             self.addSubview($0)
         }
+        
     }
     
     override internal func setConstraints() {
-        label.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+        
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+        
     }
     
 }
