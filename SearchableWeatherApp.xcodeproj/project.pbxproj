@@ -27,6 +27,8 @@
 		18599C32296DC7F7008223AF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C31296DC7F7008223AF /* Alamofire */; };
 		18599C34296DC89A008223AF /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C33296DC89A008223AF /* ReusableProtocol.swift */; };
 		18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */; };
+		18599C3C296DEBC9008223AF /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 18599C3B296DEBC8008223AF /* CityList.json */; };
+		18599C3E296DEBDB008223AF /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C3D296DEBDB008223AF /* CityModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		18599C26296DC775008223AF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		18599C33296DC89A008223AF /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSCollectionLayoutSection.swift; sourceTree = "<group>"; };
+		18599C3B296DEBC8008223AF /* CityList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
+		18599C3D296DEBDB008223AF /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 		18599C11296DC43E008223AF /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				18599C38296DEB91008223AF /* CityModel */,
 				18599C1E296DC51A008223AF /* Base */,
 			);
 			path = Constants;
@@ -167,6 +172,15 @@
 				18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */,
 			);
 			path = CollectinViewLayout;
+			sourceTree = "<group>";
+		};
+		18599C38296DEB91008223AF /* CityModel */ = {
+			isa = PBXGroup;
+			children = (
+				18599C3B296DEBC8008223AF /* CityList.json */,
+				18599C3D296DEBDB008223AF /* CityModel.swift */,
+			);
+			path = CityModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18599C3C296DEBC9008223AF /* CityList.json in Resources */,
 				18599C00296DB7D7008223AF /* LaunchScreen.storyboard in Resources */,
 				18599C08296DB843008223AF /* .gitignore in Resources */,
 				18599C0E296DB922008223AF /* readme.md in Resources */,
@@ -256,6 +271,7 @@
 				18599C14296DC45F008223AF /* APIKey.swift in Sources */,
 				18599BF6296DB7D5008223AF /* SceneDelegate.swift in Sources */,
 				18599C19296DC4B9008223AF /* MainView.swift in Sources */,
+				18599C3E296DEBDB008223AF /* CityModel.swift in Sources */,
 				18599C17296DC4AE008223AF /* MainViewController.swift in Sources */,
 				18599C27296DC775008223AF /* BaseCollectionViewCell.swift in Sources */,
 				18599C34296DC89A008223AF /* ReusableProtocol.swift in Sources */,
