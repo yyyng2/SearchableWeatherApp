@@ -1,5 +1,5 @@
 //
-//  BaseView.swift
+//  BaseCollectionViewCell.swift
 //  SearchableWeatherApp
 //
 //  Created by Y on 2023/01/11.
@@ -7,10 +7,11 @@
 
 import UIKit
 
-class BaseView: UIView {
+class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .clear
         configure()
         setConstraints()
     }
@@ -22,5 +23,5 @@ class BaseView: UIView {
     internal func configure() { }
     
     internal func setConstraints() { }
-  
+    
 }

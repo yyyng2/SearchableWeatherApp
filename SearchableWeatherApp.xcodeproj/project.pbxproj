@@ -19,6 +19,14 @@
 		18599C1B296DC4C8008223AF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C1A296DC4C8008223AF /* MainViewModel.swift */; };
 		18599C20296DC526008223AF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C1F296DC526008223AF /* BaseViewController.swift */; };
 		18599C22296DC52B008223AF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C21296DC52B008223AF /* BaseView.swift */; };
+		18599C25296DC74C008223AF /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */; };
+		18599C27296DC775008223AF /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C26296DC775008223AF /* BaseCollectionViewCell.swift */; };
+		18599C2A296DC7CF008223AF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C29296DC7CF008223AF /* SnapKit */; };
+		18599C2D296DC7E2008223AF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C2C296DC7E2008223AF /* RxCocoa */; };
+		18599C2F296DC7E2008223AF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C2E296DC7E2008223AF /* RxSwift */; };
+		18599C32296DC7F7008223AF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C31296DC7F7008223AF /* Alamofire */; };
+		18599C34296DC89A008223AF /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C33296DC89A008223AF /* ReusableProtocol.swift */; };
+		18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +44,10 @@
 		18599C1A296DC4C8008223AF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		18599C1F296DC526008223AF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		18599C21296DC52B008223AF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		18599C26296DC775008223AF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		18599C33296DC89A008223AF /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSCollectionLayoutSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +55,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18599C2F296DC7E2008223AF /* RxSwift in Frameworks */,
+				18599C32296DC7F7008223AF /* Alamofire in Frameworks */,
+				18599C2D296DC7E2008223AF /* RxCocoa in Frameworks */,
+				18599C2A296DC7CF008223AF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +102,8 @@
 		18599C0F296DC425008223AF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				18599C35296DCA1F008223AF /* CollectinViewLayout */,
+				18599C33296DC89A008223AF /* ReusableProtocol.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -117,6 +135,7 @@
 		18599C15296DC4A1008223AF /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				18599C23296DC73C008223AF /* Cell */,
 				18599C16296DC4AE008223AF /* MainViewController.swift */,
 				18599C18296DC4B9008223AF /* MainView.swift */,
 				18599C1A296DC4C8008223AF /* MainViewModel.swift */,
@@ -129,8 +148,25 @@
 			children = (
 				18599C1F296DC526008223AF /* BaseViewController.swift */,
 				18599C21296DC52B008223AF /* BaseView.swift */,
+				18599C26296DC775008223AF /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		18599C23296DC73C008223AF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18599C35296DCA1F008223AF /* CollectinViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */,
+			);
+			path = CollectinViewLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +185,12 @@
 			dependencies = (
 			);
 			name = SearchableWeatherApp;
+			packageProductDependencies = (
+				18599C29296DC7CF008223AF /* SnapKit */,
+				18599C2C296DC7E2008223AF /* RxCocoa */,
+				18599C2E296DC7E2008223AF /* RxSwift */,
+				18599C31296DC7F7008223AF /* Alamofire */,
+			);
 			productName = SearchableWeatherApp;
 			productReference = 18599BF0296DB7D5008223AF /* SearchableWeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -177,6 +219,11 @@
 				Base,
 			);
 			mainGroup = 18599BE7296DB7D5008223AF;
+			packageReferences = (
+				18599C28296DC7CF008223AF /* XCRemoteSwiftPackageReference "SnapKit" */,
+				18599C2B296DC7E2008223AF /* XCRemoteSwiftPackageReference "RxSwift" */,
+				18599C30296DC7F7008223AF /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 18599BF1296DB7D5008223AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -210,9 +257,13 @@
 				18599BF6296DB7D5008223AF /* SceneDelegate.swift in Sources */,
 				18599C19296DC4B9008223AF /* MainView.swift in Sources */,
 				18599C17296DC4AE008223AF /* MainViewController.swift in Sources */,
+				18599C27296DC775008223AF /* BaseCollectionViewCell.swift in Sources */,
+				18599C34296DC89A008223AF /* ReusableProtocol.swift in Sources */,
+				18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */,
 				18599C20296DC526008223AF /* BaseViewController.swift in Sources */,
 				18599C1B296DC4C8008223AF /* MainViewModel.swift in Sources */,
 				18599C22296DC52B008223AF /* BaseView.swift in Sources */,
+				18599C25296DC74C008223AF /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +407,6 @@
 				INFOPLIST_FILE = SearchableWeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -388,7 +438,6 @@
 				INFOPLIST_FILE = SearchableWeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -430,6 +479,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18599C28296DC7CF008223AF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		18599C2B296DC7E2008223AF /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		18599C30296DC7F7008223AF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18599C29296DC7CF008223AF /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18599C28296DC7CF008223AF /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		18599C2C296DC7E2008223AF /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18599C2B296DC7E2008223AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		18599C2E296DC7E2008223AF /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18599C2B296DC7E2008223AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		18599C31296DC7F7008223AF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18599C30296DC7F7008223AF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18599BE8296DB7D5008223AF /* Project object */;
 }

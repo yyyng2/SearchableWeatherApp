@@ -8,13 +8,15 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigation()
         binding()
     }
     
-    func setNavigation() { }
+    internal func setNavigation() { }
     
-    func binding() { }
+    internal func binding() { }
+    
 }
