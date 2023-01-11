@@ -1,0 +1,104 @@
+//
+//  APIService.swift
+//  SearchableWeatherApp
+//
+//  Created by Y on 2023/01/11.
+//
+
+import UIKit
+
+import Alamofire
+import SwiftyJSON
+
+class APIService {
+    
+//    func requestWeather(lat: Double, lon: Double, completionHandler: @escaping (DataResponse<City, AFError>) -> ()) {
+//
+//        let api = WeatherAPI.request(lat: lat, lon: lon, appid: APIKey.openWeather, units: "metric")
+//
+//        User.userLat = lat
+//        User.userLon = lon
+//        print(api.path)
+//
+//        AF.request(api.path, method: .get, parameters: api.parameters, encoding: URLEncoding(arrayEncoding: .noBrackets)).responseDecodable(of: City.self) { response in
+//            print(response)
+//            completionHandler(response)
+//        }
+//    }
+    
+    func requestForecast(lat: Double, lon: Double, completionHandler: @escaping ([ForecastModel], [CurrentWeatherModel]) -> ()) {
+
+        let api = WeatherAPI.reqeustForecast(lat: lat, lon: lon, appid: APIKey.openWeather, units: "metric")
+
+        User.userLat = lat
+        User.userLon = lon
+
+        AF.request(api.path, method: .get, parameters: api.parameters, encoding: URLEncoding(arrayEncoding: .noBrackets)).responseData(completionHandler: { response in
+            switch response.result {
+            case .success(let value):
+                
+                var result: [ForecastModel] = []
+                
+                var currentWeather: [CurrentWeatherModel] = []
+            
+                
+                let json = JSON(value)
+                
+                if let items = json["list"].array {
+                    for item in items {
+                        let temp = item["main"]["temp"].doubleValue
+                        var icon = ""
+                        if let weather = item["weather"].array {
+                            for i in weather {
+                                icon = i["icon"].stringValue
+                            }
+                        }
+                  
+                        let dtTxt = item["dt_txt"].stringValue
+                        
+                        result.append(ForecastModel(temp: temp, icon: icon, dt_txt: dtTxt))
+                    }
+                }
+                
+                let temp = json["list"][0]["main"]["temp"].doubleValue
+                let temp_min = json["list"][0]["main"]["temp_min"].doubleValue
+                let temp_max = json["list"][0]["main"]["temp_max"].doubleValue
+                let pressure = json["list"][0]["main"]["pressure"].intValue
+                let humidity = json["list"][0]["main"]["humidity"].intValue
+                
+                let main = json["list"][0]["weather"][0]["main"].stringValue
+                let description = json["list"][0]["weather"][0]["description"].stringValue
+                
+                let clouds = json["list"][0]["clouds"]["all"].intValue
+                
+                let speed = json["list"][0]["wind"]["speed"].doubleValue
+                let gust = json["list"][0]["wind"]["gust"].doubleValue
+                
+                let name = json["city"]["name"].stringValue
+                let lat = json["city"]["coord"]["lat"].doubleValue
+                let lon = json["city"]["coord"]["lon"].doubleValue
+                
+//                var name = ""
+//                var lat = 0.0
+//                var lon = 0.0
+//
+//                if let items = json["city"].array {
+//                    for item in items {
+//                        name = item["name"].stringValue
+//                        lat = item["coord"].array
+//                    }
+//                }
+                
+                currentWeather.append(CurrentWeatherModel(pressure: pressure, humidity: humidity, clouds: clouds, temp: temp, lat: lat, lon: lon, speed: speed, gust: gust, temp_min: temp_min, temp_max: temp_max, city: name, description: description, main: main))
+                
+                completionHandler(result, currentWeather)
+
+            case .failure(let error):
+                print(error)
+            }
+        })
+         
+        }
+    
+    }
+
