@@ -12,7 +12,7 @@ extension String {
         let dateFormatter = DateFormatter()
       //  dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
        
         guard let date = dateFormatter.date(from: self) else {
             print("stringFormatToDateError")
@@ -26,7 +26,7 @@ extension String {
         dateFormatter.locale = Locale.current
      
   
-        dateFormatter.dateFormat = "a hh:mm"
+        dateFormatter.dateFormat = "HH"
        
         let date = dateFormatter.date(from: self)
         return date

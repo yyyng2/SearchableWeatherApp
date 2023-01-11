@@ -39,11 +39,11 @@ class MainViewController: BaseViewController {
                 if User.city == "" {
                     self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.mainView.collectionView)
                 } else {
-//                    let time = self.viewModel.compareDate()
-//                    if time > -1 {
+                    let time = self.viewModel.compareDate()
+                    if time < -1 {
                         self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.mainView.collectionView)
                         print(self.viewModel.currentWeather)
-//                    }
+                    }
                 }
                 
             }

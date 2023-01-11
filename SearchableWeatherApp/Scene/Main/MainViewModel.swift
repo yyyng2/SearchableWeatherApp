@@ -34,20 +34,13 @@ class MainViewModel {
     var searchStatus = false
     
     public func compareDate() -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-       
-        guard let lastUpdateDate = dateFormatter.date(from: User.lastUpdate.description) else {
-            print("lastUpateDateError", User.lastUpdate.description, Date().description)
-            return 0
-        }
-        let date = Date.now.description.replacingOccurrences(of: "+0000", with: "")
-        guard let today = dateFormatter.date(from: date) else {
-            print("todayError", date)
-            return 0
-        }
+
+        let lastUpdateDate = User.lastUpdate.stringFormatToDate()
         
-        guard let date = Calendar.current.dateComponents([.hour], from: lastUpdateDate, to: today).hour else { return 3 }
+        let date = Date.now.description.replacingOccurrences(of: "+0000", with: "")
+        let today = date.stringFormatToDate()
+        
+        guard let date = Calendar.current.dateComponents([.hour], from: today, to: lastUpdateDate).hour else { return 3 }
         print("compareDateSuccess", date,"today\(today)","last\(lastUpdateDate)")
         return date
     }
@@ -56,7 +49,7 @@ class MainViewModel {
        
         switch requestStyle {
         case .firstRequest:
-            APIService().requestForecast(lat: 37.5683, lon: 126.9778) { ForecastModel, CurrentWeatherModel in
+            APIService().requestForecast(lat: 36.783611, lon: 127.004173) { ForecastModel, CurrentWeatherModel in
                 self.currentForecast = ForecastModel
                 self.currentWeather = CurrentWeatherModel
              

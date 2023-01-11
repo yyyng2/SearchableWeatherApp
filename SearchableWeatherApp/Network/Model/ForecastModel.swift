@@ -9,5 +9,6 @@ import Foundation
 
 struct ForecastModel: Codable {
     let temp: Double
-    let icon, dt_txt: String
+    let icon: String
+    let dt_txt: Date
 }

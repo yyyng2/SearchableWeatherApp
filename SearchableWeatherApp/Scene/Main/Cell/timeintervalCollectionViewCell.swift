@@ -40,7 +40,6 @@ class TimeintervalCollectionViewCell: BaseCollectionViewCell {
         let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().horizontalLayout())
         view.backgroundColor = Constants.BaseColor.clear
         
-        view.register(TimeintervalItemCell.self, forCellWithReuseIdentifier: TimeintervalItemCell.reuseIdentifier)
        
         return view
     }()
@@ -52,6 +51,7 @@ class TimeintervalCollectionViewCell: BaseCollectionViewCell {
             addSubview($0)
         }
         
+        collectionView.register(TimeintervalItemCell.self, forCellWithReuseIdentifier: TimeintervalItemCell.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -73,8 +73,8 @@ class TimeintervalCollectionViewCell: BaseCollectionViewCell {
             make.leading.trailing.equalTo(windLabel)
         }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(separatorLine.snp.bottom).offset(20)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(separatorLine.snp.bottom).offset(10)
+            make.bottom.equalToSuperview().inset(4)
             make.leading.trailing.equalToSuperview()
         }
     }
@@ -82,22 +82,43 @@ class TimeintervalCollectionViewCell: BaseCollectionViewCell {
 
 extension TimeintervalCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16
+        let data = repository.fetch()
+        if data.count > 15 {
+            return 16
+        } else {
+            return 0
+        }
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeintervalItemCell.reuseIdentifier, for: indexPath) as? TimeintervalItemCell else { return UICollectionViewCell() }
         
-        guard let data = viewModel.tasks else { return cell }
+        let data = repository.fetch()
         
-        if indexPath.row == 0 {
+        if indexPath.item == 0 {
             cell.timeLabel.text = "지금"
         } else {
-            cell.timeLabel.text = "\(data[indexPath.row].dt_txt)시"
+            let distanceHour = Calendar.current.dateComponents([.hour], from: Date(), to: data[indexPath.item].dt_txt).hour
+            
+            guard let distanceTime = distanceHour else { return cell }
+            
+            if distanceTime < 1 {
+                repository.deleteById(id: data[indexPath.item].objectId)
+                repository.fetch()
+                collectionView.reloadData()
+            }
+            
+            guard let time = data[indexPath.item].dt_txt.dateFormatToTime() else { return cell }
+            print(time, distanceHour, indexPath.item)
+          
+            
+            cell.timeLabel.text = "\(time)시"
         }
-      
-//        cell.weatherImageView.image =
-        cell.tempLabel.text = "\(data[indexPath.row].temp)°"
+        
+        
+        cell.weatherImageView.image = UIImage(named: "\(data[indexPath.row].icon)")
+        cell.tempLabel.text = "\(Int(data[indexPath.item].temp))°"
         
         return cell
     }

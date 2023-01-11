@@ -59,8 +59,11 @@ class APIService {
                   
                         let dtTxt = item["dt_txt"].stringValue
                         
-                        result.append(ForecastModel(temp: temp, icon: icon, dt_txt: dtTxt))
-                        let task = Forecast(temp: temp, icon: icon, dateString: dtTxt)
+                        let date = dtTxt.replacingOccurrences(of: "+0000", with: "").stringFormatToDate()
+                        
+                        result.append(ForecastModel(temp: temp, icon: icon.dropLast(1).description, dt_txt: date))
+            
+                        let task = Forecast(temp: temp, icon: icon.dropLast(1).description, date: date)
                         self.repository.addRecord(record: task)
                       
                     }
@@ -84,16 +87,6 @@ class APIService {
                 let lat = json["city"]["coord"]["lat"].doubleValue
                 let lon = json["city"]["coord"]["lon"].doubleValue
                 
-//                var name = ""
-//                var lat = 0.0
-//                var lon = 0.0
-//
-//                if let items = json["city"].array {
-//                    for item in items {
-//                        name = item["name"].stringValue
-//                        lat = item["coord"].array
-//                    }
-//                }
                 
                 currentWeather.append(CurrentWeatherModel(pressure: pressure, humidity: humidity, clouds: clouds, temp: temp, lat: lat, lon: lon, speed: speed, gust: gust, temp_min: temp_min, temp_max: temp_max, city: name, main: main))
                 User.pressure = pressure
@@ -110,7 +103,7 @@ class APIService {
                 User.main = main
                 
                 
-                User.lastUpdate = result[0].dt_txt
+                User.lastUpdate = "\(result[0].dt_txt)"
                 
                 completionHandler(result, currentWeather)
 

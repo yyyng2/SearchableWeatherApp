@@ -92,7 +92,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeintervalCollectionViewCell.reuseIdentifier, for: indexPath) as? TimeintervalCollectionViewCell else { return UICollectionViewCell() }
-            guard let data = viewModel.currentWeather else { return cell }
             
             cell.backgroundConfiguration?.cornerRadius = 10
             cell.backgroundView?.layer.cornerRadius = 10
@@ -131,6 +130,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if indexPath.section == 5 {
+            
+            guard let data = viewModel.city else { return }
+            
+            networkMoniter()
+            APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
+                collectionView.reloadData()
+            }
+        }
     }
 }

@@ -12,17 +12,21 @@ class TimeintervalItemCell: BaseCollectionViewCell {
     let timeLabel: UILabel = {
        let label = UILabel()
         label.text = "지금"
+        label.font = .systemFont(ofSize: 12)
+        label.textAlignment = .center
         return label
     }()
     
     let weatherImageView: UIImageView = {
        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
     let tempLabel: UILabel = {
        let label = UILabel()
         label.text = "temp"
+        label.textAlignment = .center
         return label
     }()
     
@@ -35,17 +39,19 @@ class TimeintervalItemCell: BaseCollectionViewCell {
     override func setConstraints() {
         timeLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.4)
+            make.centerY.equalToSuperview().multipliedBy(0.2)
             make.horizontalEdges.equalToSuperview()
         }
         weatherImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.horizontalEdges.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(timeLabel.snp.bottom)
+            make.bottom.equalTo(tempLabel.snp.top)
         }
         tempLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(1.6)
+            make.top.equalTo(weatherImageView.snp.bottom)
             make.horizontalEdges.equalToSuperview()
         }
     }
