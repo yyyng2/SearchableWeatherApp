@@ -19,10 +19,7 @@ class MainViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
-    let repository = ForecastRepository()
-    
-    var searchState = false
-    
+    let repository = ForecastRepository()    
     
     override func loadView() {
         self.view = mainView
@@ -32,7 +29,7 @@ class MainViewController: BaseViewController {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
             self.networkMoniter()
-            if User.userLat == 0.0 {
+            if User.lat == 0.0 {
                 self.viewModel.requestAPI(requestStyle: .firstRequest, collectionView: self.mainView.collectionView)
                 print(self.viewModel.currentWeather)
             } else {

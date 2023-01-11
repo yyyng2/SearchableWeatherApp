@@ -47,9 +47,9 @@ enum keyEnum: String {
 }
 
 struct User {
-    @UserDefaultsHelper(key: keyEnum.userLat.rawValue, defaultValue: 0.0)
+    @UserDefaultsHelper(key: keyEnum.userLat.rawValue, defaultValue: 36.783611)
     static var userLat: Double
-    @UserDefaultsHelper(key: keyEnum.userLon.rawValue, defaultValue: 0.0)
+    @UserDefaultsHelper(key: keyEnum.userLon.rawValue, defaultValue: 127.004173)
     static var userLon: Double
     @UserDefaultsHelper(key: keyEnum.lastUpdate.rawValue, defaultValue: Date())
     static var lastUpdate: Date

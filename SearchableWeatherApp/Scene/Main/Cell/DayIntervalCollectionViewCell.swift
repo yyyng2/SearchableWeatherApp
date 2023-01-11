@@ -40,8 +40,8 @@ class DayIntervalCollectionViewCell: BaseCollectionViewCell {
       
         let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().verticalLayout())
         view.backgroundColor = Constants.BaseColor.clear
+        view.isScrollEnabled = false
         
-       
         return view
     }()
     
@@ -92,7 +92,6 @@ extension DayIntervalCollectionViewCell: UICollectionViewDelegate, UICollectionV
             lazy var fiveDays: [Forecast] = viewModel.loadFiveDays()
             
             return fiveDays.count
-         
         }
     
     }

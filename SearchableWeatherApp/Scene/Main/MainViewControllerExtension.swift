@@ -34,7 +34,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder() // TextField 비활성화
-        searchState = false
+        viewModel.isSearching = false
         
         self.mainView.collectionView.reloadData()
         return true
@@ -127,6 +127,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 return cell
                 
+            case 3:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapCollectionViewCell.reuseIdentifier, for: indexPath) as? MapCollectionViewCell else { return UICollectionViewCell() }
+                
+                cell.backgroundConfiguration?.cornerRadius = 10
+                cell.backgroundView?.layer.cornerRadius = 10
+                cell.backgroundView?.clipsToBounds = true
+
+        
+                
+                return cell
                 
             default:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier, for: indexPath) as? CurrentLocationWeatherCollectionViewCell else { return UICollectionViewCell() }

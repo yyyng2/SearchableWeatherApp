@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 import RealmSwift
 import RxSwift
@@ -53,6 +54,8 @@ class MainViewModel {
                 collectionView.reloadData()
                 let cell = TimeIntervalCollectionViewCell()
                 cell.collectionView.reloadData()
+                let mapViewCell = MapCollectionViewCell()
+                mapViewCell.setCenter()
             }
         case .userRequest:
             APIService().requestForecast(lat: User.userLat, lon: User.userLon) { ForecastModel, CurrentWeatherModel in
@@ -63,6 +66,8 @@ class MainViewModel {
                 
                 let cell = TimeIntervalCollectionViewCell()
                 cell.collectionView.reloadData()
+                let mapViewCell = MapCollectionViewCell()
+                mapViewCell.setCenter()
             }
         }
       

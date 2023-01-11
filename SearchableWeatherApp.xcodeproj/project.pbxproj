@@ -48,6 +48,7 @@
 		18599C6D296EE5CB008223AF /* ForecastRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C6C296EE5CB008223AF /* ForecastRealmModel.swift */; };
 		18599C6F296EE5E2008223AF /* ForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C6E296EE5E2008223AF /* ForecastRepository.swift */; };
 		18599C71296EEA88008223AF /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C70296EEA88008223AF /* NetworkMonitor.swift */; };
+		186041AA296F4D65002DBEF9 /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041A9296F4D65002DBEF9 /* MapCollectionViewCell.swift */; };
 		18DB300F296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */; };
 		18DB3011296F2FD3005472A8 /* DayIntervalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		18599C6C296EE5CB008223AF /* ForecastRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRealmModel.swift; sourceTree = "<group>"; };
 		18599C6E296EE5E2008223AF /* ForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepository.swift; sourceTree = "<group>"; };
 		18599C70296EEA88008223AF /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		186041A9296F4D65002DBEF9 /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
 		18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalCollectionViewCell.swift; sourceTree = "<group>"; };
 		18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,6 +220,7 @@
 				18599C5C296E6AEA008223AF /* TimeIntervalItemCell.swift */,
 				18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */,
 				18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */,
+				186041A9296F4D65002DBEF9 /* MapCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			files = (
 				18599C65296ECA99008223AF /* Date+Extension.swift in Sources */,
 				18599BF4296DB7D5008223AF /* AppDelegate.swift in Sources */,
+				186041AA296F4D65002DBEF9 /* MapCollectionViewCell.swift in Sources */,
 				18599C40296DEC68008223AF /* MainViewControllerExtension.swift in Sources */,
 				18599C5B296E5E94008223AF /* CurrentWeatherModel.swift in Sources */,
 				18599C14296DC45F008223AF /* APIKey.swift in Sources */,
