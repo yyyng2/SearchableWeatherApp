@@ -85,12 +85,14 @@ class DayIntervalCollectionViewCell: BaseCollectionViewCell {
 
 extension DayIntervalCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        lazy var fiveDays: [Forecast] = viewModel.loadFiveDays()
         
-        if fiveDays.count > 4 {
-            return 5
-        } else {
+        if User.tempMin == 0 {
             return 0
+        } else {
+            lazy var fiveDays: [Forecast] = viewModel.loadFiveDays()
+            
+            return fiveDays.count
+         
         }
     
     }
