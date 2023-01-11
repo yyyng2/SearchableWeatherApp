@@ -31,6 +31,7 @@ import Foundation
 enum keyEnum: String {
     case userLat = "userLat"
     case userLon = "userLon"
+    case lastUpdate = "lastUpdate"
 }
 
 struct User {
@@ -38,4 +39,6 @@ struct User {
     static var userLat: Double
     @UserDefaultsHelper(key: keyEnum.userLon.rawValue, defaultValue: 0.0)
     static var userLon: Double
+    @UserDefaultsHelper(key: keyEnum.lastUpdate.rawValue, defaultValue: "")
+    static var lastUpdate: String
 }

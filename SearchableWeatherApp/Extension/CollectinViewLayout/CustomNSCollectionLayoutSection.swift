@@ -140,7 +140,9 @@ class CustomNSCollectionLayoutSection {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 20)
         let layout = UICollectionViewCompositionalLayout(section: section)
+        
         return layout
     }
     

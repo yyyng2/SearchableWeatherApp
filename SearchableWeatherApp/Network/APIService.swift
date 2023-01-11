@@ -91,6 +91,8 @@ class APIService {
                 
                 currentWeather.append(CurrentWeatherModel(pressure: pressure, humidity: humidity, clouds: clouds, temp: temp, lat: lat, lon: lon, speed: speed, gust: gust, temp_min: temp_min, temp_max: temp_max, city: name, description: description, main: main))
                 
+                User.lastUpdate = result[0].dt_txt
+                
                 completionHandler(result, currentWeather)
 
             case .failure(let error):

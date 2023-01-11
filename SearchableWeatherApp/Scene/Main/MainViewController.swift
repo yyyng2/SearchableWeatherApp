@@ -31,8 +31,12 @@ class MainViewController: BaseViewController {
                 self.viewModel.requestAPI(requestStyle: .firstRequest, collectionView: self.mainView.collectionView)
                 print(self.viewModel.currentWeather)
             } else {
-                self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.mainView.collectionView)
-                print(self.viewModel.currentWeather)
+                let time = self.viewModel.compareDate()
+                if time > -1 {
+                    self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.mainView.collectionView)
+                    print(self.viewModel.currentWeather)
+                }
+                
             }
         }
       

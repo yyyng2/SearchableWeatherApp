@@ -8,13 +8,13 @@
 import UIKit
 
 class TimeintervalCollectionViewCell: BaseCollectionViewCell {
-    let viewModel = MainViewModel()
+    lazy var viewModel = MainViewModel()
     
     let background: UIView = {
        let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
-        view.backgroundColor = UIColor(named: "CellBackgroundColor")
+        view.backgroundColor = Constants.BaseColor.cellBackgroundColor
         return view
     }()
     
@@ -27,14 +27,14 @@ class TimeintervalCollectionViewCell: BaseCollectionViewCell {
     
     let separatorLine: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "SearchBarBackgroundColor")
+        view.backgroundColor = Constants.BaseColor.searchBarBackgroundColor
         return view
     }()
     
     let collectionView: UICollectionView = {
       
         let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().horizontalLayout())
-        view.backgroundColor = .clear
+        view.backgroundColor = Constants.BaseColor.clear
         
         view.register(TimeintervalItemCell.self, forCellWithReuseIdentifier: TimeintervalItemCell.reuseIdentifier)
        
@@ -42,7 +42,7 @@ class TimeintervalCollectionViewCell: BaseCollectionViewCell {
     }()
     
     override func configure() {
-        backgroundColor = .clear
+        backgroundColor = Constants.BaseColor.clear
         
         [background, windLabel,separatorLine,collectionView].forEach {
             addSubview($0)

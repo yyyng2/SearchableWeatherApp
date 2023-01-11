@@ -102,6 +102,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
        
             cell.windLabel.text = "돌풍의 풍속은 최대 \(data[0].gust)m/s 입니다."
             
+            cell.collectionView.reloadData()
+            
             return cell
             
         case 5:

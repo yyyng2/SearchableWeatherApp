@@ -19,7 +19,7 @@ class MainView: BaseView {
         
         //placeholder Color
         bar.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray2])
-        bar.searchBar.searchTextField.backgroundColor = UIColor(named: "SearchBarBackgroundColor")
+        bar.searchBar.searchTextField.backgroundColor = Constants.BaseColor.searchBarBackgroundColor
         
         //Magnifying Icon Color
         let magnifyingIconView = bar.searchBar.searchTextField.leftView as! UIImageView
@@ -33,7 +33,7 @@ class MainView: BaseView {
     let collectionView: UICollectionView = {
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().getSectionLayout())
-        view.backgroundColor = .clear
+        view.backgroundColor = Constants.BaseColor.clear
         
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.register(CurrentLocationWeatherCollectionViewCell.self, forCellWithReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier)
@@ -44,7 +44,7 @@ class MainView: BaseView {
     
     override internal func configure() {
         
-        backgroundColor = UIColor(named: "BackgroundColor")
+        backgroundColor = Constants.BaseColor.backgroundColor
         
         [collectionView].forEach {
             self.addSubview($0)

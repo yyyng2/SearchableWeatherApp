@@ -20,47 +20,49 @@ class MainViewModel {
     
     var currentForecast: [ForecastModel]?
     
-//    var searchStatus: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var searchStatus = false
+    
+    public func compareDate() -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+       
+        guard let lastUpdateDate = dateFormatter.date(from: User.lastUpdate.description) else {
+            print("lastUpateDateError", User.lastUpdate.description, Date().description)
+            return 3
+        }
+        let date = Date.now.description.replacingOccurrences(of: "+0000", with: "")
+        guard let today = dateFormatter.date(from: date) else {
+            print("todayError", date)
+            return 3
+        }
+        
+        guard let date = Calendar.current.dateComponents([.hour], from: lastUpdateDate, to: today).hour else { return 3 }
+        print("compareDateSuccess", date,"today\(today)","last\(lastUpdateDate)")
+        return date
+    }
     
     public func requestAPI(requestStyle: requestStyle, collectionView: UICollectionView) {
        
         switch requestStyle {
         case .firstRequest:
-//            APIService().requestWeather(lat: 37.43861, lon: 127.137779) { response in
-//                print(response.value)
-//                switch response.result {
-//
-//                case .success(let result):
-//                    self.currentWeather = result
-//                    print(result)
-//                    collectionView.reloadData()
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
             APIService().requestForecast(lat: 37.43861, lon: 127.137779) { ForecastModel, CurrentWeatherModel in
                 self.currentForecast = ForecastModel
                 self.currentWeather = CurrentWeatherModel
-                print("currentForecast", CurrentWeatherModel)
+             
                 collectionView.reloadData()
+                
+                let cell = TimeintervalCollectionViewCell()
+                cell.collectionView.reloadData()
             }
         case .userRequest:
-//            APIService().requestWeather(lat: User.userLat, lon: User.userLon) { response in
-//                switch response.result {
-//                case .success(let result):
-//                    self.currentWeather = result
-//                    print(result)
-//                    collectionView.reloadData()
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
             APIService().requestForecast(lat: User.userLat, lon: User.userLon) { ForecastModel, CurrentWeatherModel in
                 self.currentForecast = ForecastModel
                 self.currentWeather = CurrentWeatherModel
-                print("currentForecast", CurrentWeatherModel)
+                print(self.currentForecast)
                 collectionView.reloadData()
+                
+                let cell = TimeintervalCollectionViewCell()
+                cell.collectionView.reloadData()
             }
         }
       

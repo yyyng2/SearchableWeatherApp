@@ -27,7 +27,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let separatorLine: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "SearchBarBackgroundColor")
+        view.backgroundColor = Constants.BaseColor.searchBarBackgroundColor
         return view
     }()
     
