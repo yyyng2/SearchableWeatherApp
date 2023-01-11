@@ -32,12 +32,12 @@ class MainView: BaseView {
     
     let collectionView: UICollectionView = {
         
-        let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().getLayout())
+        let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().getSectionLayout())
         view.backgroundColor = .clear
         
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.register(CurrentLocationWeatherCollectionViewCell.self, forCellWithReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier)
-        view.register(timeintervalCollectionViewCell.self, forCellWithReuseIdentifier: timeintervalCollectionViewCell.reuseIdentifier)
+        view.register(TimeintervalCollectionViewCell.self, forCellWithReuseIdentifier: TimeintervalCollectionViewCell.reuseIdentifier)
         return view
         
     }()

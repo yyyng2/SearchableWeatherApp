@@ -92,6 +92,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             return cell
             
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeintervalCollectionViewCell.reuseIdentifier, for: indexPath) as? TimeintervalCollectionViewCell else { return UICollectionViewCell() }
+            guard let data = viewModel.currentWeather else { return cell }
+            
+            cell.backgroundConfiguration?.cornerRadius = 10
+            cell.backgroundView?.layer.cornerRadius = 10
+            cell.backgroundView?.clipsToBounds = true
+       
+            cell.windLabel.text = "돌풍의 풍속은 최대 \(data[0].gust)m/s 입니다."
+            
+            return cell
+            
         case 5:
             
             switch viewModel.searchStatus {
