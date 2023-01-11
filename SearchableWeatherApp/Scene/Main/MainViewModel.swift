@@ -7,6 +7,7 @@
 
 import UIKit
 
+import RealmSwift
 import RxSwift
 import RxCocoa
 
@@ -20,6 +21,16 @@ class MainViewModel {
     
     var currentForecast: [ForecastModel]?
     
+    var tasks: Results<Forecast>! {
+        didSet {
+            let cell = TimeintervalCollectionViewCell()
+            cell.collectionView.reloadData()
+            let vc = MainViewController()
+            vc.mainView.collectionView.reloadData()
+            print("Tasks Changed")
+        }
+    }
+    
     var searchStatus = false
     
     public func compareDate() -> Int {
@@ -28,12 +39,12 @@ class MainViewModel {
        
         guard let lastUpdateDate = dateFormatter.date(from: User.lastUpdate.description) else {
             print("lastUpateDateError", User.lastUpdate.description, Date().description)
-            return 3
+            return 0
         }
         let date = Date.now.description.replacingOccurrences(of: "+0000", with: "")
         guard let today = dateFormatter.date(from: date) else {
             print("todayError", date)
-            return 3
+            return 0
         }
         
         guard let date = Calendar.current.dateComponents([.hour], from: lastUpdateDate, to: today).hour else { return 3 }
@@ -45,12 +56,11 @@ class MainViewModel {
        
         switch requestStyle {
         case .firstRequest:
-            APIService().requestForecast(lat: 37.43861, lon: 127.137779) { ForecastModel, CurrentWeatherModel in
+            APIService().requestForecast(lat: 37.5683, lon: 126.9778) { ForecastModel, CurrentWeatherModel in
                 self.currentForecast = ForecastModel
                 self.currentWeather = CurrentWeatherModel
              
                 collectionView.reloadData()
-                
                 let cell = TimeintervalCollectionViewCell()
                 cell.collectionView.reloadData()
             }

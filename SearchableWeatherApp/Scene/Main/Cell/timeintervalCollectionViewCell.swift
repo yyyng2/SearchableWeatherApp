@@ -7,8 +7,12 @@
 
 import UIKit
 
+import RealmSwift
+
 class TimeintervalCollectionViewCell: BaseCollectionViewCell {
     lazy var viewModel = MainViewModel()
+    
+    let repository = ForecastRepository()
     
     let background: UIView = {
        let view = UIView()
@@ -84,7 +88,7 @@ extension TimeintervalCollectionViewCell: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeintervalItemCell.reuseIdentifier, for: indexPath) as? TimeintervalItemCell else { return UICollectionViewCell() }
         
-        guard let data = viewModel.currentForecast else { return cell }
+        guard let data = viewModel.tasks else { return cell }
         
         if indexPath.row == 0 {
             cell.timeLabel.text = "지금"

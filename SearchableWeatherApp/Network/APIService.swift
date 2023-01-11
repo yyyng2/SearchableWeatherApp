@@ -12,6 +12,8 @@ import SwiftyJSON
 
 class APIService {
     
+    let repository = ForecastRepository()
+    
 //    func requestWeather(lat: Double, lon: Double, completionHandler: @escaping (DataResponse<City, AFError>) -> ()) {
 //
 //        let api = WeatherAPI.request(lat: lat, lon: lon, appid: APIKey.openWeather, units: "metric")
@@ -36,6 +38,7 @@ class APIService {
         AF.request(api.path, method: .get, parameters: api.parameters, encoding: URLEncoding(arrayEncoding: .noBrackets)).responseData(completionHandler: { response in
             switch response.result {
             case .success(let value):
+                self.repository.deleteAll()
                 
                 var result: [ForecastModel] = []
                 
@@ -57,6 +60,9 @@ class APIService {
                         let dtTxt = item["dt_txt"].stringValue
                         
                         result.append(ForecastModel(temp: temp, icon: icon, dt_txt: dtTxt))
+                        let task = Forecast(temp: temp, icon: icon, dateString: dtTxt)
+                        self.repository.addRecord(record: task)
+                      
                     }
                 }
                 
@@ -89,7 +95,20 @@ class APIService {
 //                    }
 //                }
                 
-                currentWeather.append(CurrentWeatherModel(pressure: pressure, humidity: humidity, clouds: clouds, temp: temp, lat: lat, lon: lon, speed: speed, gust: gust, temp_min: temp_min, temp_max: temp_max, city: name, description: description, main: main))
+                currentWeather.append(CurrentWeatherModel(pressure: pressure, humidity: humidity, clouds: clouds, temp: temp, lat: lat, lon: lon, speed: speed, gust: gust, temp_min: temp_min, temp_max: temp_max, city: name, main: main))
+                User.pressure = pressure
+                User.humidity = humidity
+                User.clouds = clouds
+                User.temp = temp
+                User.lat = lat
+                User.lon = lon
+                User.speed = speed
+                User.gust = gust
+                User.tempMin = temp_min
+                User.tempMax = temp_max
+                User.city = name
+                User.main = main
+                
                 
                 User.lastUpdate = result[0].dt_txt
                 

@@ -22,10 +22,6 @@ extension WeatherAPI {
     var forecastURL: String {
         return "https://api.openweathermap.org/data/2.5/forecast?"
     }
-    
-    var units: String {
-        return "metric"
-    }
                    
     var path: URL {
         switch self {

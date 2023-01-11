@@ -64773,6 +64773,33 @@
       }
    },
    {
+      "id":1835327,
+      "name":"Daegu",
+      "country":"KR",
+      "coord":{
+         "lon":128.55,
+         "lat":35.8
+      }
+   },
+   {
+      "id":1835848,
+      "name":"Seoul",
+      "country":"KR",
+      "coord":{
+         "lon":126.9778,
+         "lat":37.5683
+      }
+   },
+   {
+      "id":1838524,
+      "name":"Busan",
+      "country":"KR",
+      "coord":{
+         "lon":129.0403,
+         "lat":35.1028
+      }
+   },
+   {
       "id":1838722,
       "name":"Puan",
       "country":"KR",

@@ -32,6 +32,18 @@ enum keyEnum: String {
     case userLat = "userLat"
     case userLon = "userLon"
     case lastUpdate = "lastUpdate"
+    case city = "city"
+    case temp = "temp"
+    case main = "main"
+    case tempMax = "tempMax"
+    case tempMin = "tempMin"
+    case pressure = "pressure"
+    case humidity = "humidity"
+    case clouds = "clouds"
+    case lat = "lat"
+    case lon = "lon"
+    case speed = "speed"
+    case gust = "gust"
 }
 
 struct User {
@@ -41,4 +53,28 @@ struct User {
     static var userLon: Double
     @UserDefaultsHelper(key: keyEnum.lastUpdate.rawValue, defaultValue: "")
     static var lastUpdate: String
+    @UserDefaultsHelper(key: keyEnum.city.rawValue, defaultValue: "")
+    static var city: String
+    @UserDefaultsHelper(key: keyEnum.temp.rawValue, defaultValue: 0.0)
+    static var temp: Double
+    @UserDefaultsHelper(key: keyEnum.main.rawValue, defaultValue: "")
+    static var main: String
+    @UserDefaultsHelper(key: keyEnum.tempMax.rawValue, defaultValue: 0.0)
+    static var tempMax: Double
+    @UserDefaultsHelper(key: keyEnum.tempMin.rawValue, defaultValue: 0.0)
+    static var tempMin: Double
+    @UserDefaultsHelper(key: keyEnum.pressure.rawValue, defaultValue: 0)
+    static var pressure: Int
+    @UserDefaultsHelper(key: keyEnum.humidity.rawValue, defaultValue: 0)
+    static var humidity: Int
+    @UserDefaultsHelper(key: keyEnum.clouds.rawValue, defaultValue: 0)
+    static var clouds: Int
+    @UserDefaultsHelper(key: keyEnum.lat.rawValue, defaultValue: 0.0)
+    static var lat: Double
+    @UserDefaultsHelper(key: keyEnum.lon.rawValue, defaultValue: 0.0)
+    static var lon: Double
+    @UserDefaultsHelper(key: keyEnum.speed.rawValue, defaultValue: 0.0)
+    static var speed: Double
+    @UserDefaultsHelper(key: keyEnum.gust.rawValue, defaultValue: 0.0)
+    static var gust: Double
 }

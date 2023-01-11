@@ -7,6 +7,7 @@
 
 import UIKit
 
+import RealmSwift
 import RxSwift
 import RxCocoa
 
@@ -18,7 +19,10 @@ class MainViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
+    let repository = ForecastRepository()
+    
     var searchState = false
+    
     
     override func loadView() {
         self.view = mainView
@@ -27,20 +31,24 @@ class MainViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
+            self.networkMoniter()
             if User.userLat == 0.0 {
                 self.viewModel.requestAPI(requestStyle: .firstRequest, collectionView: self.mainView.collectionView)
                 print(self.viewModel.currentWeather)
             } else {
-                let time = self.viewModel.compareDate()
-                if time > -1 {
+                if User.city == "" {
                     self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.mainView.collectionView)
-                    print(self.viewModel.currentWeather)
+                } else {
+//                    let time = self.viewModel.compareDate()
+//                    if time > -1 {
+                        self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.mainView.collectionView)
+                        print(self.viewModel.currentWeather)
+//                    }
                 }
                 
             }
         }
-      
-        
+        viewModel.tasks = repository.fetch()
     }
     
     override func configure() {

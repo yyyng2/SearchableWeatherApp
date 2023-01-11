@@ -29,8 +29,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
                 self.mainView.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
-        
-        
+    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -83,12 +82,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.section {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier, for: indexPath) as? CurrentLocationWeatherCollectionViewCell else { return UICollectionViewCell() }
-            guard let data = viewModel.currentWeather else { return cell }
-                    
-            cell.cityLabel.text = "\(data[0].city)"
-            cell.tempLabel.text = "\(data[0].temp)°"
-            cell.stateLabel.text = "\(data[0].main)"
-            cell.maxMinLabel.text = "최고: \(data[0].temp_max)° | 최저: \(data[0].temp_min)°"
+          
+            cell.cityLabel.text = User.city
+            cell.tempLabel.text = "\(Int(User.temp))"
+            cell.stateLabel.text = User.main
+            cell.maxMinLabel.text = "최고: \(Int(User.tempMax))° | 최저: \(Int(User.tempMin))°"
             
             return cell
             
@@ -100,7 +98,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.backgroundView?.layer.cornerRadius = 10
             cell.backgroundView?.clipsToBounds = true
        
-            cell.windLabel.text = "돌풍의 풍속은 최대 \(data[0].gust)m/s 입니다."
+            cell.windLabel.text = "돌풍의 풍속은 최대 \(Int(User.gust))m/s 입니다."
             
             cell.collectionView.reloadData()
             

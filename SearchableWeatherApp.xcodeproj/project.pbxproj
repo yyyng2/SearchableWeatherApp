@@ -47,6 +47,7 @@
 		18599C6A296EE3ED008223AF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C69296EE3ED008223AF /* RealmSwift */; };
 		18599C6D296EE5CB008223AF /* ForecastRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C6C296EE5CB008223AF /* ForecastRealmModel.swift */; };
 		18599C6F296EE5E2008223AF /* ForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C6E296EE5E2008223AF /* ForecastRepository.swift */; };
+		18599C71296EEA88008223AF /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C70296EEA88008223AF /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		18599C64296ECA99008223AF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		18599C6C296EE5CB008223AF /* ForecastRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRealmModel.swift; sourceTree = "<group>"; };
 		18599C6E296EE5E2008223AF /* ForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepository.swift; sourceTree = "<group>"; };
+		18599C70296EEA88008223AF /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				18599C13296DC45F008223AF /* APIKey.swift */,
 				18599C45296E0AA5008223AF /* Endpoint.swift */,
 				18599C47296E0B11008223AF /* APIService.swift */,
+				18599C70296EEA88008223AF /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				18599C6D296EE5CB008223AF /* ForecastRealmModel.swift in Sources */,
 				18599C17296DC4AE008223AF /* MainViewController.swift in Sources */,
 				18599C27296DC775008223AF /* BaseCollectionViewCell.swift in Sources */,
+				18599C71296EEA88008223AF /* NetworkMonitor.swift in Sources */,
 				18599C42296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift in Sources */,
 				18599C34296DC89A008223AF /* ReusableProtocol.swift in Sources */,
 				18599C6F296EE5E2008223AF /* ForecastRepository.swift in Sources */,
