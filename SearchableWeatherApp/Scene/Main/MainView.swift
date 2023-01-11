@@ -36,7 +36,8 @@ class MainView: BaseView {
         view.backgroundColor = .clear
         
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
-
+        view.register(CurrentLocationWeatherCollectionViewCell.self, forCellWithReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier)
+        view.register(timeintervalCollectionViewCell.self, forCellWithReuseIdentifier: timeintervalCollectionViewCell.reuseIdentifier)
         return view
         
     }()
