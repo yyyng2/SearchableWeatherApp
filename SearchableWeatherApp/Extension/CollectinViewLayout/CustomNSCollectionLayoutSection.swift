@@ -16,8 +16,8 @@ class CustomNSCollectionLayoutSection {
         switch section {
             
         case 0:
-            let itemFractionalWidthFraction = 1.0 / 1.0 // horizontal 5개의 셀
-            let groupFractionalHeightFraction = 1.0 / 4.0 // vertical 4개의 셀
+            let itemFractionalWidthFraction = 1.0 / 1.0
+            let groupFractionalHeightFraction = 1.0 / 4.0
             let itemInset: CGFloat = 2.5
             
             // Item
@@ -42,8 +42,8 @@ class CustomNSCollectionLayoutSection {
             
         case 5:
             
-          let itemFractionalWidthFraction = 1.0 / 1.0 // horizontal 1개의 셀
-          let groupFractionalHeightFraction = 1.0 / 11.0 // vertical 4개의 셀
+          let itemFractionalWidthFraction = 1.0 / 1.0
+          let groupFractionalHeightFraction = 1.0 / 11.0
           let itemInset: CGFloat = 2
           
           // Item
@@ -73,8 +73,8 @@ class CustomNSCollectionLayoutSection {
             
         default:
             
-          let itemFractionalWidthFraction = 1.0 / 5.0 // horizontal 5개의 셀
-          let groupFractionalHeightFraction = 1.0 / 4.0 // vertical 4개의 셀
+          let itemFractionalWidthFraction = 1.0 / 5.0
+          let groupFractionalHeightFraction = 1.0 / 4.0
           let itemInset: CGFloat = 2.5
           
           // Item

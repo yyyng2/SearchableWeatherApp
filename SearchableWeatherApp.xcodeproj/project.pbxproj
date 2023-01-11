@@ -29,6 +29,16 @@
 		18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */; };
 		18599C3C296DEBC9008223AF /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 18599C3B296DEBC8008223AF /* CityList.json */; };
 		18599C3E296DEBDB008223AF /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C3D296DEBDB008223AF /* CityModel.swift */; };
+		18599C40296DEC68008223AF /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C3F296DEC68008223AF /* MainViewControllerExtension.swift */; };
+		18599C42296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */; };
+		18599C44296E09EC008223AF /* timeintervalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C43296E09EC008223AF /* timeintervalCollectionViewCell.swift */; };
+		18599C46296E0AA5008223AF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C45296E0AA5008223AF /* Endpoint.swift */; };
+		18599C48296E0B11008223AF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C47296E0B11008223AF /* APIService.swift */; };
+		18599C4C296E11DB008223AF /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C4B296E11DB008223AF /* UserDefaultsHelper.swift */; };
+		18599C4F296E1919008223AF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C4E296E1919008223AF /* Toast */; };
+		18599C52296E438C008223AF /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C51296E438C008223AF /* SwiftyJSON */; };
+		18599C58296E5B97008223AF /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C57296E5B97008223AF /* ForecastModel.swift */; };
+		18599C5B296E5E94008223AF /* CurrentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C5A296E5E94008223AF /* CurrentWeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +62,14 @@
 		18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSCollectionLayoutSection.swift; sourceTree = "<group>"; };
 		18599C3B296DEBC8008223AF /* CityList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
 		18599C3D296DEBDB008223AF /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		18599C3F296DEC68008223AF /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
+		18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		18599C43296E09EC008223AF /* timeintervalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeintervalCollectionViewCell.swift; sourceTree = "<group>"; };
+		18599C45296E0AA5008223AF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		18599C47296E0B11008223AF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		18599C4B296E11DB008223AF /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		18599C57296E5B97008223AF /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
+		18599C5A296E5E94008223AF /* CurrentWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +77,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18599C52296E438C008223AF /* SwiftyJSON in Frameworks */,
 				18599C2F296DC7E2008223AF /* RxSwift in Frameworks */,
 				18599C32296DC7F7008223AF /* Alamofire in Frameworks */,
 				18599C2D296DC7E2008223AF /* RxCocoa in Frameworks */,
+				18599C4F296E1919008223AF /* Toast in Frameworks */,
 				18599C2A296DC7CF008223AF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +128,7 @@
 			children = (
 				18599C35296DCA1F008223AF /* CollectinViewLayout */,
 				18599C33296DC89A008223AF /* ReusableProtocol.swift */,
+				18599C4B296E11DB008223AF /* UserDefaultsHelper.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -123,7 +144,6 @@
 		18599C11296DC43E008223AF /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				18599C38296DEB91008223AF /* CityModel */,
 				18599C1E296DC51A008223AF /* Base */,
 			);
 			path = Constants;
@@ -132,7 +152,10 @@
 		18599C12296DC451008223AF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				18599C59296E5E5E008223AF /* Model */,
 				18599C13296DC45F008223AF /* APIKey.swift */,
+				18599C45296E0AA5008223AF /* Endpoint.swift */,
+				18599C47296E0B11008223AF /* APIService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -142,6 +165,7 @@
 			children = (
 				18599C23296DC73C008223AF /* Cell */,
 				18599C16296DC4AE008223AF /* MainViewController.swift */,
+				18599C3F296DEC68008223AF /* MainViewControllerExtension.swift */,
 				18599C18296DC4B9008223AF /* MainView.swift */,
 				18599C1A296DC4C8008223AF /* MainViewModel.swift */,
 			);
@@ -162,6 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */,
+				18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */,
+				18599C43296E09EC008223AF /* timeintervalCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -174,13 +200,15 @@
 			path = CollectinViewLayout;
 			sourceTree = "<group>";
 		};
-		18599C38296DEB91008223AF /* CityModel */ = {
+		18599C59296E5E5E008223AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				18599C3B296DEBC8008223AF /* CityList.json */,
 				18599C3D296DEBDB008223AF /* CityModel.swift */,
+				18599C57296E5B97008223AF /* ForecastModel.swift */,
+				18599C5A296E5E94008223AF /* CurrentWeatherModel.swift */,
 			);
-			path = CityModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +232,8 @@
 				18599C2C296DC7E2008223AF /* RxCocoa */,
 				18599C2E296DC7E2008223AF /* RxSwift */,
 				18599C31296DC7F7008223AF /* Alamofire */,
+				18599C4E296E1919008223AF /* Toast */,
+				18599C51296E438C008223AF /* SwiftyJSON */,
 			);
 			productName = SearchableWeatherApp;
 			productReference = 18599BF0296DB7D5008223AF /* SearchableWeatherApp.app */;
@@ -237,6 +267,8 @@
 				18599C28296DC7CF008223AF /* XCRemoteSwiftPackageReference "SnapKit" */,
 				18599C2B296DC7E2008223AF /* XCRemoteSwiftPackageReference "RxSwift" */,
 				18599C30296DC7F7008223AF /* XCRemoteSwiftPackageReference "Alamofire" */,
+				18599C4D296E1919008223AF /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				18599C50296E438C008223AF /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 18599BF1296DB7D5008223AF /* Products */;
 			projectDirPath = "";
@@ -268,17 +300,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				18599BF4296DB7D5008223AF /* AppDelegate.swift in Sources */,
+				18599C40296DEC68008223AF /* MainViewControllerExtension.swift in Sources */,
+				18599C5B296E5E94008223AF /* CurrentWeatherModel.swift in Sources */,
 				18599C14296DC45F008223AF /* APIKey.swift in Sources */,
 				18599BF6296DB7D5008223AF /* SceneDelegate.swift in Sources */,
 				18599C19296DC4B9008223AF /* MainView.swift in Sources */,
 				18599C3E296DEBDB008223AF /* CityModel.swift in Sources */,
 				18599C17296DC4AE008223AF /* MainViewController.swift in Sources */,
 				18599C27296DC775008223AF /* BaseCollectionViewCell.swift in Sources */,
+				18599C42296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift in Sources */,
 				18599C34296DC89A008223AF /* ReusableProtocol.swift in Sources */,
+				18599C4C296E11DB008223AF /* UserDefaultsHelper.swift in Sources */,
+				18599C44296E09EC008223AF /* timeintervalCollectionViewCell.swift in Sources */,
+				18599C58296E5B97008223AF /* ForecastModel.swift in Sources */,
 				18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */,
 				18599C20296DC526008223AF /* BaseViewController.swift in Sources */,
 				18599C1B296DC4C8008223AF /* MainViewModel.swift in Sources */,
 				18599C22296DC52B008223AF /* BaseView.swift in Sources */,
+				18599C46296E0AA5008223AF /* Endpoint.swift in Sources */,
+				18599C48296E0B11008223AF /* APIService.swift in Sources */,
 				18599C25296DC74C008223AF /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +561,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		18599C4D296E1919008223AF /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		18599C50296E438C008223AF /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -543,6 +599,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18599C30296DC7F7008223AF /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		18599C4E296E1919008223AF /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18599C4D296E1919008223AF /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		18599C51296E438C008223AF /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18599C50296E438C008223AF /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct City: Codable {
+struct CityBase: Codable {
     let id: Int
     let name, country: String
     let coord: Coord
@@ -17,4 +17,4 @@ struct Coord: Codable {
     let lon, lat: Double
 }
 
-typealias CityModel = [City]
+typealias CityModel = [CityBase]
