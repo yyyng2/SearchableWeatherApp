@@ -41,9 +41,14 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        
         viewModel.searchStatus = false
-
-        self.mainView.collectionView.reloadData()
+        viewModel.city = []
+        viewModel.tasks = repository.fetch()
+        mainView.collectionView.reloadData()
+        
+        self.dismiss(animated: true)
       
     }
     
@@ -54,90 +59,94 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 6
+        switch viewModel.searchStatus {
+        case true:
+            return 1
+        case false:
+            return 5
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch viewModel.searchStatus {
         case true:
-            switch section {
-            case 5:
-                return viewModel.city?.count ?? 0
-            default:
-                return 0
-            }
+            return viewModel.city?.count ?? 0
         case false:
-            switch section {
-            case 5:
-                return 0
-            default:
-                return 1
-            }
+            return 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.section {
-        case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier, for: indexPath) as? CurrentLocationWeatherCollectionViewCell else { return UICollectionViewCell() }
-          
-            cell.cityLabel.text = User.city
-            cell.tempLabel.text = "\(Int(User.temp))"
-            cell.stateLabel.text = User.main
-            cell.maxMinLabel.text = "최고: \(Int(User.tempMax))° | 최저: \(Int(User.tempMin))°"
+        switch viewModel.searchStatus {
+        case true:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+            
+            guard let data = viewModel.city else { return cell }
+            
+            cell.cityLabel.text = data[indexPath.row].name
+            cell.countryLabel.text = data[indexPath.row].country
             
             return cell
-            
-        case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeintervalCollectionViewCell.reuseIdentifier, for: indexPath) as? TimeintervalCollectionViewCell else { return UICollectionViewCell() }
-            
-            cell.backgroundConfiguration?.cornerRadius = 10
-            cell.backgroundView?.layer.cornerRadius = 10
-            cell.backgroundView?.clipsToBounds = true
-       
-            cell.windLabel.text = "돌풍의 풍속은 최대 \(Int(User.gust))m/s 입니다."
-            
-            cell.collectionView.reloadData()
-            
-            return cell
-            
-        case 5:
-            
-            switch viewModel.searchStatus {
+        case false:
+            switch indexPath.section {
+            case 0:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier, for: indexPath) as? CurrentLocationWeatherCollectionViewCell else { return UICollectionViewCell() }
                 
-            case true:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-                
-                guard let data = viewModel.city else { return cell }
-                
-                cell.cityLabel.text = data[indexPath.row].name
-                cell.countryLabel.text = data[indexPath.row].country
+                cell.cityLabel.text = User.city
+                cell.tempLabel.text = "\(Int(User.temp))"
+                cell.stateLabel.text = User.main
+                cell.maxMinLabel.text = "최고: \(Int(User.tempMax))° | 최저: \(Int(User.tempMin))°"
                 
                 return cell
                 
-            case false:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+            case 1:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeintervalCollectionViewCell.reuseIdentifier, for: indexPath) as? TimeintervalCollectionViewCell else { return UICollectionViewCell() }
+                
+                cell.backgroundConfiguration?.cornerRadius = 10
+                cell.backgroundView?.layer.cornerRadius = 10
+                cell.backgroundView?.clipsToBounds = true
+                
+                cell.windLabel.text = "돌풍의 풍속은 최대 \(Int(User.gust))m/s 입니다."
+                
+                cell.collectionView.reloadData()
+                
+                return cell
+                
+                
+            default:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier, for: indexPath) as? CurrentLocationWeatherCollectionViewCell else { return UICollectionViewCell() }
                 return cell
             }
-            
-        default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-            return cell
         }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 5 {
-            
+        switch viewModel.searchStatus {
+        case true:
+                
             guard let data = viewModel.city else { return }
             
             networkMoniter()
             APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
-                collectionView.reloadData()
+                
+                self.viewModel.searchStatus = false
+                self.viewModel.city = []
+                self.viewModel.tasks = self.repository.fetch()
+                self.dismiss(animated: true)
+                self.mainView.collectionView.reloadData()
+                
+                self.navigationItem.searchController?.searchBar.text = ""
+                
             }
+            
+        case false:
+            break
         }
+      
     }
+    
 }

@@ -31,7 +31,7 @@ class MainViewModel {
         }
     }
     
-    var searchStatus = false
+    lazy var searchStatus = false
     
     public func compareDate() -> Int {
 
