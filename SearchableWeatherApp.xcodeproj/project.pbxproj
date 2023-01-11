@@ -49,6 +49,9 @@
 		18599C6F296EE5E2008223AF /* ForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C6E296EE5E2008223AF /* ForecastRepository.swift */; };
 		18599C71296EEA88008223AF /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C70296EEA88008223AF /* NetworkMonitor.swift */; };
 		186041AA296F4D65002DBEF9 /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041A9296F4D65002DBEF9 /* MapCollectionViewCell.swift */; };
+		186041AC296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041AB296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift */; };
+		186041B4296F627D002DBEF9 /* QuarteredItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041B3296F627D002DBEF9 /* QuarteredItemCell.swift */; };
+		186041B6296F670C002DBEF9 /* QuarteredInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041B5296F670C002DBEF9 /* QuarteredInfo.swift */; };
 		18DB300F296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */; };
 		18DB3011296F2FD3005472A8 /* DayIntervalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +93,9 @@
 		18599C6E296EE5E2008223AF /* ForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepository.swift; sourceTree = "<group>"; };
 		18599C70296EEA88008223AF /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		186041A9296F4D65002DBEF9 /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
+		186041AB296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarteredCollectionViewCell.swift; sourceTree = "<group>"; };
+		186041B3296F627D002DBEF9 /* QuarteredItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarteredItemCell.swift; sourceTree = "<group>"; };
+		186041B5296F670C002DBEF9 /* QuarteredInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarteredInfo.swift; sourceTree = "<group>"; };
 		18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalCollectionViewCell.swift; sourceTree = "<group>"; };
 		18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,13 +220,12 @@
 		18599C23296DC73C008223AF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */,
-				18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */,
-				18599C43296E09EC008223AF /* TimeIntervalCollectionViewCell.swift */,
-				18599C5C296E6AEA008223AF /* TimeIntervalItemCell.swift */,
-				18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */,
-				18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */,
+				186041B2296F625C002DBEF9 /* Quartered */,
+				186041B0296F6232002DBEF9 /* DayInterval */,
+				186041AF296F6221002DBEF9 /* TimeInterval */,
 				186041A9296F4D65002DBEF9 /* MapCollectionViewCell.swift */,
+				18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */,
+				18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -259,6 +264,34 @@
 				18599C6E296EE5E2008223AF /* ForecastRepository.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		186041AF296F6221002DBEF9 /* TimeInterval */ = {
+			isa = PBXGroup;
+			children = (
+				18599C43296E09EC008223AF /* TimeIntervalCollectionViewCell.swift */,
+				18599C5C296E6AEA008223AF /* TimeIntervalItemCell.swift */,
+			);
+			path = TimeInterval;
+			sourceTree = "<group>";
+		};
+		186041B0296F6232002DBEF9 /* DayInterval */ = {
+			isa = PBXGroup;
+			children = (
+				18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */,
+				18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */,
+			);
+			path = DayInterval;
+			sourceTree = "<group>";
+		};
+		186041B2296F625C002DBEF9 /* Quartered */ = {
+			isa = PBXGroup;
+			children = (
+				186041AB296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift */,
+				186041B3296F627D002DBEF9 /* QuarteredItemCell.swift */,
+				186041B5296F670C002DBEF9 /* QuarteredInfo.swift */,
+			);
+			path = Quartered;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +392,7 @@
 				18599C5B296E5E94008223AF /* CurrentWeatherModel.swift in Sources */,
 				18599C14296DC45F008223AF /* APIKey.swift in Sources */,
 				18599C5D296E6AEA008223AF /* TimeIntervalItemCell.swift in Sources */,
+				186041B4296F627D002DBEF9 /* QuarteredItemCell.swift in Sources */,
 				18599C63296EC768008223AF /* Color.swift in Sources */,
 				18599BF6296DB7D5008223AF /* SceneDelegate.swift in Sources */,
 				18599C19296DC4B9008223AF /* MainView.swift in Sources */,
@@ -368,12 +402,14 @@
 				18DB3011296F2FD3005472A8 /* DayIntervalItemCell.swift in Sources */,
 				18599C27296DC775008223AF /* BaseCollectionViewCell.swift in Sources */,
 				18599C71296EEA88008223AF /* NetworkMonitor.swift in Sources */,
+				186041AC296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift in Sources */,
 				18599C42296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift in Sources */,
 				18599C34296DC89A008223AF /* ReusableProtocol.swift in Sources */,
 				18599C6F296EE5E2008223AF /* ForecastRepository.swift in Sources */,
 				18599C60296EC56D008223AF /* String+Extension.swift in Sources */,
 				18599C4C296E11DB008223AF /* UserDefaultsHelper.swift in Sources */,
 				18599C44296E09EC008223AF /* TimeIntervalCollectionViewCell.swift in Sources */,
+				186041B6296F670C002DBEF9 /* QuarteredInfo.swift in Sources */,
 				18DB300F296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift in Sources */,
 				18599C58296E5B97008223AF /* ForecastModel.swift in Sources */,
 				18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */,

@@ -35,6 +35,7 @@ class MapCollectionViewCell: BaseCollectionViewCell {
         view.isPitchEnabled = false
         view.isRotateEnabled = false
         view.isScrollEnabled = false
+        view.layer.cornerRadius = 5
         return view
     }()
     
@@ -63,7 +64,7 @@ class MapCollectionViewCell: BaseCollectionViewCell {
             make.top.equalTo(precipitationLabel.snp.bottom).offset(4)
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().inset(10)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(10)
         }
     }
 }

@@ -40,6 +40,7 @@ class MainView: BaseView {
         view.register(TimeIntervalCollectionViewCell.self, forCellWithReuseIdentifier: TimeIntervalCollectionViewCell.reuseIdentifier)
         view.register(DayIntervalCollectionViewCell.self, forCellWithReuseIdentifier: DayIntervalCollectionViewCell.reuseIdentifier)
         view.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: MapCollectionViewCell.reuseIdentifier)
+        view.register(QuarteredCollectionViewCell.self, forCellWithReuseIdentifier: QuarteredCollectionViewCell.reuseIdentifier)
         return view
         
     }()

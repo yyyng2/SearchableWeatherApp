@@ -64,8 +64,6 @@ class MainViewController: BaseViewController {
     override func binding() {
         viewModel.decodeJson()
         
-      
-    
           
     }
     

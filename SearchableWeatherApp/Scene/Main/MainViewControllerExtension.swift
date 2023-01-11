@@ -13,22 +13,24 @@ import RxCocoa
 extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
+        self.viewModel.isSearching = true
 
-        guard let text = searchController.searchBar.text else {
-            return
+        DispatchQueue.main.async {
+
+            
+            self.mainView.collectionView.reloadData()
+            
+            self.viewModel.city = self.viewModel.cityList
+            
+            searchController.searchBar.rx.text.orEmpty
+                .distinctUntilChanged()
+                .subscribe(onNext: { text in
+                    self.viewModel.city = self.viewModel.cityList?.filter{ $0.name.hasPrefix(text) || $0.country.hasPrefix(text) }
+                    self.mainView.collectionView.reloadData()
+                    self.mainView.collectionView.collectionViewLayout.invalidateLayout()
+                })
+                .disposed(by: self.disposeBag)
         }
-        
-        viewModel.isSearching = true
-
-        viewModel.city = viewModel.cityList
-        
-        searchController.searchBar.rx.text.orEmpty
-            .distinctUntilChanged()
-            .subscribe(onNext: { text in
-                self.viewModel.city = self.viewModel.cityList?.filter{ $0.name.hasPrefix(text) || $0.country.hasPrefix(text) }
-                self.mainView.collectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
     
     }
     
@@ -37,19 +39,23 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
         viewModel.isSearching = false
         
         self.mainView.collectionView.reloadData()
+        self.mainView.collectionView.collectionViewLayout.invalidateLayout()
         return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        
-        viewModel.isSearching = false
-        viewModel.city = []
-        viewModel.tasks = repository.fetch()
-        mainView.collectionView.reloadData()
-        
-        self.dismiss(animated: true)
-      
+        DispatchQueue.main.async {
+            searchBar.text = ""
+            
+            self.viewModel.isSearching = false
+            self.viewModel.city = []
+
+            self.mainView.collectionView.reloadData()
+            self.mainView.collectionView.collectionViewLayout.invalidateLayout()
+            
+            self.dismiss(animated: true)
+        }
+        self.viewModel.isSearching = false
     }
     
     
@@ -111,7 +117,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 cell.windLabel.text = "돌풍의 풍속은 최대 \(Int(User.gust))m/s 입니다."
                 
-                cell.collectionView.reloadData()
                 
                 return cell
                 
@@ -123,7 +128,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.backgroundView?.clipsToBounds = true
 
                 
-                cell.collectionView.reloadData()
                 
                 return cell
                 
@@ -139,7 +143,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return cell
                 
             default:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier, for: indexPath) as? CurrentLocationWeatherCollectionViewCell else { return UICollectionViewCell() }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuarteredCollectionViewCell.reuseIdentifier, for: indexPath) as? QuarteredCollectionViewCell else { return UICollectionViewCell() }
                 return cell
             }
         }
@@ -154,18 +158,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             networkMoniter()
             APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
-                
-                self.viewModel.isSearching = false
-                self.viewModel.city?.removeAll()
-                collectionView.reloadData()
-                self.viewModel.tasks = self.repository.fetch()
-                self.dismiss(animated: true)
+               
+                DispatchQueue.main.async {
+                    self.viewModel.isSearching = false
+                    self.viewModel.city?.removeAll()
+                    collectionView.reloadData()
+                    collectionView.collectionViewLayout.invalidateLayout()
+                    self.viewModel.tasks = self.repository.fetch()
+                    self.navigationItem.searchController?.searchBar.text = ""
+                    
+                    self.dismiss(animated: true)
+              
+                    
           
-                
-                self.navigationItem.searchController?.searchBar.text = ""
-                
+                }
+              
+                self.viewModel.isSearching = false
             }
-            
+       
+
         case false:
             break
         }
