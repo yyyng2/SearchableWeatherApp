@@ -17,12 +17,16 @@ final class Forecast: Object {
     @Persisted var temp: Double
     @Persisted var icon: String
     @Persisted var dt_txt: Date
+    @Persisted var temp_min: Double
+    @Persisted var temp_max: Double
     
-    convenience init(temp: Double, icon: String, date: Date) {
+    convenience init(temp: Double, icon: String, date: Date, temp_max: Double, temp_min: Double) {
         self.init()
         self.temp = temp
         self.icon = icon
         self.dt_txt = date
+        self.temp_max = temp_max
+        self.temp_min = temp_min
     }
     
 }

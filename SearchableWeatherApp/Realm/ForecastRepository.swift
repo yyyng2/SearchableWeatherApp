@@ -16,11 +16,6 @@ protocol ForecastRepositoryType {
 }
 
 final class ForecastRepository: ForecastRepositoryType {
-    
-
-
-
-
 
     let localRealm = try! Realm()
     
@@ -39,8 +34,8 @@ final class ForecastRepository: ForecastRepositoryType {
         return localRealm.objects(Forecast.self).sorted(byKeyPath: "dt_txt", ascending: true)
     }
     
-    func fetchFilterDateString(formatString: String) -> Results<Forecast> {
-        return localRealm.objects(Forecast.self).filter("dateString CONTAINS[c] '\(formatString)'").sorted(byKeyPath: "date", ascending: true)
+    func fetchFilterDate(date: Date) -> Results<Forecast> {
+        return localRealm.objects(Forecast.self).filter("dt_txt == %@", date).sorted(byKeyPath: "dt_txt", ascending: true)
     }
     
     func deleteById(id: ObjectId) {

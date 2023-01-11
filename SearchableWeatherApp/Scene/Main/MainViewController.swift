@@ -45,19 +45,19 @@ class MainViewController: BaseViewController {
                         print(self.viewModel.currentWeather)
                     }
                 }
-                
+                self.viewModel.tasks = self.repository.fetch()
             }
         }
-        viewModel.tasks = repository.fetch()
+      
     }
     
     override func configure() {
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
+        mainView.searchBar.delegate = self
     }
     
     override func setNavigation() {
-        self.navigationItem.hidesBackButton = true
         self.navigationItem.searchController = mainView.searchBar
         self.navigationItem.searchController?.searchResultsUpdater = self
         self.navigationItem.searchController?.obscuresBackgroundDuringPresentation = false

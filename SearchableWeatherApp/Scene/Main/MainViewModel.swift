@@ -23,7 +23,7 @@ class MainViewModel {
     
     var tasks: Results<Forecast>! {
         didSet {
-            let cell = TimeintervalCollectionViewCell()
+            let cell = TimeIntervalCollectionViewCell()
             cell.collectionView.reloadData()
             let vc = MainViewController()
             vc.mainView.collectionView.reloadData()
@@ -31,17 +31,14 @@ class MainViewModel {
         }
     }
     
-    lazy var searchStatus = false
+    let repository = ForecastRepository()
+    
+    lazy var isSearching = false
     
     public func compareDate() -> Int {
 
-        let lastUpdateDate = User.lastUpdate.stringFormatToDate()
-        
-        let date = Date.now.description.replacingOccurrences(of: "+0000", with: "")
-        let today = date.stringFormatToDate()
-        
-        guard let date = Calendar.current.dateComponents([.hour], from: today, to: lastUpdateDate).hour else { return 3 }
-        print("compareDateSuccess", date,"today\(today)","last\(lastUpdateDate)")
+        guard let date = Calendar.current.dateComponents([.hour], from: Date(), to: User.lastUpdate).hour else { return 3 }
+        print("compareDateSuccess", date,"today\(Date())","last\(User.lastUpdate)")
         return date
     }
     
@@ -54,7 +51,7 @@ class MainViewModel {
                 self.currentWeather = CurrentWeatherModel
              
                 collectionView.reloadData()
-                let cell = TimeintervalCollectionViewCell()
+                let cell = TimeIntervalCollectionViewCell()
                 cell.collectionView.reloadData()
             }
         case .userRequest:
@@ -64,11 +61,35 @@ class MainViewModel {
                 print(self.currentForecast)
                 collectionView.reloadData()
                 
-                let cell = TimeintervalCollectionViewCell()
+                let cell = TimeIntervalCollectionViewCell()
                 cell.collectionView.reloadData()
             }
         }
       
+    }
+    
+    public func loadFiveDays() -> [Forecast] {
+        let today = Date()
+        let dayOne = repository.fetch()
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+        guard let tomorrowUnwrapped = tomorrow!.dateFormatToDate() else { return [dayOne[0]] }
+        let dayTwo = repository.fetchFilterDate(date: tomorrowUnwrapped)
+        let twoDaysLater = Calendar.current.date(byAdding: .day, value: 2, to: today)
+        guard let twoDaysLaterUnwrapped = twoDaysLater!.dateFormatToDate() else { return [dayOne[0]] }
+        let dayThree = repository.fetchFilterDate(date: twoDaysLaterUnwrapped)
+        let threeDaysLater = Calendar.current.date(byAdding: .day, value: 3, to: today)
+        guard let threeDaysLaterUnwrapped = threeDaysLater!.dateFormatToDate() else { return [dayOne[0]] }
+        let dayFour = repository.fetchFilterDate(date: threeDaysLaterUnwrapped)
+        let fourDaysLater = Calendar.current.date(byAdding: .day, value: 4, to: today)
+        guard let fourDaysLaterUnwrapped = fourDaysLater!.dateFormatToDate() else { return [dayOne[0]] }
+        let dayFive = repository.fetchFilterDate(date: fourDaysLaterUnwrapped)
+        
+        let result = [dayOne[0],dayTwo[0],dayThree[0],dayFour[0],dayFive[0]]
+        
+        let cell = DayIntervalCollectionViewCell()
+        cell.collectionView.reloadData()
+        print(result)
+        return result
     }
     
     public func decodeJson() {

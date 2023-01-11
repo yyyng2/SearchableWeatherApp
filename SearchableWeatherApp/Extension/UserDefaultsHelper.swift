@@ -51,8 +51,8 @@ struct User {
     static var userLat: Double
     @UserDefaultsHelper(key: keyEnum.userLon.rawValue, defaultValue: 0.0)
     static var userLon: Double
-    @UserDefaultsHelper(key: keyEnum.lastUpdate.rawValue, defaultValue: "")
-    static var lastUpdate: String
+    @UserDefaultsHelper(key: keyEnum.lastUpdate.rawValue, defaultValue: Date())
+    static var lastUpdate: Date
     @UserDefaultsHelper(key: keyEnum.city.rawValue, defaultValue: "")
     static var city: String
     @UserDefaultsHelper(key: keyEnum.temp.rawValue, defaultValue: 0.0)

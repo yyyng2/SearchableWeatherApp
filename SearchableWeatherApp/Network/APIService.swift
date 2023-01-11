@@ -50,6 +50,8 @@ class APIService {
                 if let items = json["list"].array {
                     for item in items {
                         let temp = item["main"]["temp"].doubleValue
+                        let temp_min = item["main"]["temp_min"].doubleValue
+                        let temp_max = item["main"]["temp_max"].doubleValue
                         var icon = ""
                         if let weather = item["weather"].array {
                             for i in weather {
@@ -61,9 +63,9 @@ class APIService {
                         
                         let date = dtTxt.replacingOccurrences(of: "+0000", with: "").stringFormatToDate()
                         
-                        result.append(ForecastModel(temp: temp, icon: icon.dropLast(1).description, dt_txt: date))
+                        result.append(ForecastModel(temp: temp, temp_min: temp_min, temp_max: temp_max, icon: icon.dropLast(1).description, dt_txt: date))
             
-                        let task = Forecast(temp: temp, icon: icon.dropLast(1).description, date: date)
+                        let task = Forecast(temp: temp, icon: icon.dropLast(1).description, date: date, temp_max: temp_max, temp_min: temp_min)
                         self.repository.addRecord(record: task)
                       
                     }
@@ -103,7 +105,7 @@ class APIService {
                 User.main = main
                 
                 
-                User.lastUpdate = "\(result[0].dt_txt)"
+                User.lastUpdate = result[0].dt_txt
                 
                 completionHandler(result, currentWeather)
 

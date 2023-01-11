@@ -18,7 +18,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
             return
         }
         
-        viewModel.searchStatus = true
+        viewModel.isSearching = true
 
         viewModel.city = viewModel.cityList
         
@@ -34,7 +34,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder() // TextField 비활성화
-        viewModel.searchStatus = false
+        searchState = false
         
         self.mainView.collectionView.reloadData()
         return true
@@ -43,7 +43,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         
-        viewModel.searchStatus = false
+        viewModel.isSearching = false
         viewModel.city = []
         viewModel.tasks = repository.fetch()
         mainView.collectionView.reloadData()
@@ -59,7 +59,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        switch viewModel.searchStatus {
+        switch viewModel.isSearching {
         case true:
             return 1
         case false:
@@ -70,7 +70,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        switch viewModel.searchStatus {
+        switch viewModel.isSearching {
         case true:
             return viewModel.city?.count ?? 0
         case false:
@@ -80,7 +80,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch viewModel.searchStatus {
+        switch viewModel.isSearching {
         case true:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
             
@@ -103,13 +103,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return cell
                 
             case 1:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeintervalCollectionViewCell.reuseIdentifier, for: indexPath) as? TimeintervalCollectionViewCell else { return UICollectionViewCell() }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeIntervalCollectionViewCell.reuseIdentifier, for: indexPath) as? TimeIntervalCollectionViewCell else { return UICollectionViewCell() }
                 
                 cell.backgroundConfiguration?.cornerRadius = 10
                 cell.backgroundView?.layer.cornerRadius = 10
                 cell.backgroundView?.clipsToBounds = true
                 
                 cell.windLabel.text = "돌풍의 풍속은 최대 \(Int(User.gust))m/s 입니다."
+                
+                cell.collectionView.reloadData()
+                
+                return cell
+                
+            case 2:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayIntervalCollectionViewCell.reuseIdentifier, for: indexPath) as? DayIntervalCollectionViewCell else { return UICollectionViewCell() }
+                
+                cell.backgroundConfiguration?.cornerRadius = 10
+                cell.backgroundView?.layer.cornerRadius = 10
+                cell.backgroundView?.clipsToBounds = true
+
                 
                 cell.collectionView.reloadData()
                 
@@ -125,7 +137,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch viewModel.searchStatus {
+        switch viewModel.isSearching {
         case true:
                 
             guard let data = viewModel.city else { return }
@@ -133,11 +145,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             networkMoniter()
             APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
                 
-                self.viewModel.searchStatus = false
-                self.viewModel.city = []
+                self.viewModel.isSearching = false
+                self.viewModel.city?.removeAll()
+                collectionView.reloadData()
                 self.viewModel.tasks = self.repository.fetch()
                 self.dismiss(animated: true)
-                self.mainView.collectionView.reloadData()
+          
                 
                 self.navigationItem.searchController?.searchBar.text = ""
                 

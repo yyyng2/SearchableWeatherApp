@@ -44,4 +44,16 @@ extension String {
         return date
     }
     
+    public func stringFormatToDateYyyyMmDd() -> Date {
+        let dateFormatter = DateFormatter()
+      //  dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+       
+        guard let date = dateFormatter.date(from: self) else {
+            print("stringFormatToDateError")
+            return Date() }
+        return date
+    }
+    
 }

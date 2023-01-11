@@ -1,15 +1,15 @@
 //
-//  TimeIntervalCollectionViewCell.swift
+//  DayIntervalCollectionViewCell.swift
 //  SearchableWeatherApp
 //
-//  Created by Y on 2023/01/11.
+//  Created by Y on 2023/01/12.
 //
 
 import UIKit
 
 import RealmSwift
 
-class TimeIntervalCollectionViewCell: BaseCollectionViewCell {
+class DayIntervalCollectionViewCell: BaseCollectionViewCell {
     lazy var viewModel = MainViewModel()
     
     let repository = ForecastRepository()
@@ -22,9 +22,10 @@ class TimeIntervalCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    let windLabel: UILabel = {
+    let dayLabel: UILabel = {
        let label = UILabel()
-        label.text = "windLabel"
+        label.text = "5일간의 일기예보"
+        label.font = .systemFont(ofSize: 12, weight: .light)
         label.sizeToFit()
         return label
     }()
@@ -35,9 +36,9 @@ class TimeIntervalCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    let collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
       
-        let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().horizontalLayout())
+        let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().verticalLayout())
         view.backgroundColor = Constants.BaseColor.clear
         
        
@@ -47,11 +48,11 @@ class TimeIntervalCollectionViewCell: BaseCollectionViewCell {
     override func configure() {
         backgroundColor = Constants.BaseColor.clear
         
-        [background, windLabel,separatorLine,collectionView].forEach {
+        [background, dayLabel,separatorLine,collectionView].forEach {
             addSubview($0)
         }
         
-        collectionView.register(TimeIntervalItemCell.self, forCellWithReuseIdentifier: TimeIntervalItemCell.reuseIdentifier)
+        collectionView.register(DayIntervalItemCell.self, forCellWithReuseIdentifier: DayIntervalItemCell.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -60,17 +61,17 @@ class TimeIntervalCollectionViewCell: BaseCollectionViewCell {
         background.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        windLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().multipliedBy(0.25)
+        dayLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview().multipliedBy(0.2)
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().inset(10)
         }
         separatorLine.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().multipliedBy(0.5)
+            make.centerY.equalToSuperview().multipliedBy(0.4)
             make.centerX.equalToSuperview()
             make.height.equalTo(0.5)
-            make.leading.trailing.equalTo(windLabel)
+            make.leading.trailing.equalTo(dayLabel)
         }
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(separatorLine.snp.bottom).offset(10)
@@ -78,13 +79,16 @@ class TimeIntervalCollectionViewCell: BaseCollectionViewCell {
             make.leading.trailing.equalToSuperview()
         }
     }
+    
+   
 }
 
-extension TimeIntervalCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DayIntervalCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let data = repository.fetch()
-        if data.count > 15 {
-            return 16
+        lazy var fiveDays: [Forecast] = viewModel.loadFiveDays()
+        
+        if fiveDays.count > 4 {
+            return 5
         } else {
             return 0
         }
@@ -92,33 +96,27 @@ extension TimeIntervalCollectionViewCell: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeIntervalItemCell.reuseIdentifier, for: indexPath) as? TimeIntervalItemCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayIntervalItemCell.reuseIdentifier, for: indexPath) as? DayIntervalItemCell else { return UICollectionViewCell() }
         
-        let data = repository.fetch()
+        lazy var fiveDays: [Forecast] = viewModel.loadFiveDays()
         
+
+        print(fiveDays)
         if indexPath.item == 0 {
-            cell.timeLabel.text = "지금"
+            cell.dayLabel.text = "오늘"
         } else {
-            let distanceHour = Calendar.current.dateComponents([.hour], from: Date(), to: data[indexPath.item].dt_txt).hour
             
-            guard let distanceTime = distanceHour else { return cell }
+            guard let time = fiveDays[indexPath.item].dt_txt.dateFormatToDay() else { return cell }
             
-            if distanceTime < 1 {
-                repository.deleteById(id: data[indexPath.item].objectId)
-        
-                collectionView.reloadData()
-            }
             
-            guard let time = data[indexPath.item].dt_txt.dateFormatToTime() else { return cell }
-            print(time, distanceHour, indexPath.item)
-          
             
-            cell.timeLabel.text = "\(time)시"
+            cell.dayLabel.text = "\(time)"
         }
         
         
-        cell.weatherImageView.image = UIImage(named: "\(data[indexPath.item].icon)")
-        cell.tempLabel.text = "\(Int(data[indexPath.item].temp))°"
+        cell.weatherImageView.image = UIImage(named: "\(fiveDays[indexPath.item].icon)")
+        cell.tempMinLabel.text = "최소: \(Int(fiveDays[indexPath.item].temp_min))°"
+        cell.tempMaxLabel.text = "최대: \(Int(fiveDays[indexPath.item].temp_max))°"
         
         return cell
     }

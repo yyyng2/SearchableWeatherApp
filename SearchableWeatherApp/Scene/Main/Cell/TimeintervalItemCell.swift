@@ -1,5 +1,5 @@
 //
-//  TimeintervalItemCell.swift
+//  TimeIntervalItemCell.swift
 //  SearchableWeatherApp
 //
 //  Created by Y on 2023/01/11.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimeintervalItemCell: BaseCollectionViewCell {
+class TimeIntervalItemCell: BaseCollectionViewCell {
     
     let timeLabel: UILabel = {
        let label = UILabel()
