@@ -177,8 +177,9 @@
 		18599C10296DC42E008223AF /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				186041BF296FAE28002DBEF9 /* Main */,
+				186041C0296FAE45002DBEF9 /* Search */,
 				18EE09B9297022B8005EF506 /* LaunchScreen */,
-				18599C15296DC4A1008223AF /* Main */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -202,15 +203,6 @@
 				18599C70296EEA88008223AF /* NetworkMonitor.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		18599C15296DC4A1008223AF /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				186041C0296FAE45002DBEF9 /* Search */,
-				186041BF296FAE28002DBEF9 /* Main */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		18599C1E296DC51A008223AF /* Base */ = {
