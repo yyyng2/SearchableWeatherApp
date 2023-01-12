@@ -28,7 +28,6 @@ final class MainViewModel {
             cell.collectionView.reloadData()
             let vc = MainViewController()
             vc.mainView.collectionView.reloadData()
-            print("Tasks Changed")
         }
     }
     
@@ -39,7 +38,7 @@ final class MainViewModel {
     public func compareDate() -> Int {
 
         guard let date = Calendar.current.dateComponents([.hour], from: Date(), to: User.lastUpdate).hour else { return 3 }
-        print("compareDateSuccess", date,"today\(Date())","last\(User.lastUpdate)")
+
         return date
     }
     
@@ -61,8 +60,6 @@ final class MainViewModel {
             APIService().requestForecast(lat: User.userLat, lon: User.userLon) { ForecastModel, CurrentWeatherModel in
                 self.currentForecast = ForecastModel
                 self.currentWeather = CurrentWeatherModel
-                print(self.currentForecast)
-             
                 
                 let cell = TimeIntervalCollectionViewCell()
                 cell.collectionView.reloadData()
@@ -93,42 +90,8 @@ final class MainViewModel {
         
         let cell = DayIntervalCollectionViewCell()
         cell.collectionView.reloadData()
-        print(result)
+
         return result
-    }
-    
-    public func decodeJson() {
-        guard let cityData = loadCity() else { return }
-        print("cityDataSuccess")
-        print(cityData)
-        do {
-            cityList = try JSONDecoder().decode(CityModel.self, from: cityData)
-            print("cityListSuccess")
-            guard let cityOne = cityList?[0] else { return }
-            print(cityOne.coord)
-        } catch {
-            print("cityListError")
-        }
-    }
-    
-    private func loadCity() -> Data? {
-        let fileName = "CityList"
-        let fileType = "json"
-        
-        guard let path = Bundle.main.url(forResource: fileName, withExtension: fileType) else {
-            print("pathError")
-            return nil
-        }
-        print("pathSuccess")
-        
-        do {
-            let data = try Data(contentsOf: path)
-            print("cityListSuccess")
-            return data
-        } catch {
-            print("cityListError")
-            return nil
-        }
     }
    
 }

@@ -29,11 +29,9 @@ final class MainViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("mainViewWillAppear",#function)
        
         viewModel.tasks = repository.fetch()
         mainView.collectionView.reloadData()
-        
         
     }
     
@@ -49,12 +47,8 @@ final class MainViewController: BaseViewController {
     
     override func setNavigation() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-//        self.navigationItem.searchController = mainView.searchBar
         mainView.searchBar.hidesNavigationBarDuringPresentation = true
         
-        mainView.searchBar.searchResultsUpdater = self
-        
-        self.navigationItem.searchController?.searchResultsUpdater = self
         self.navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }

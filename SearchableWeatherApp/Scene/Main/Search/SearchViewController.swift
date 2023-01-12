@@ -27,23 +27,17 @@ class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.filterJson(text: "")
         searchBar.placeholder = "Search"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print(#function)
-        let vc = MainViewController()
-        vc.mainView.collectionView.reloadData()
     }
     
     override func setNavigation() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = cancelButton
         self.navigationController?.navigationBar.tintColor = .systemGray2
-//        searchBar.setValue("Cancel", forKey: "cancelButtonText")
-//        searchBar.tintColor = .systemGray2
 
         self.navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
         self.navigationItem.hidesSearchBarWhenScrolling = false

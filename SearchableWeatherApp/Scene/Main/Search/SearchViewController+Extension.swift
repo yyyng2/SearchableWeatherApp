@@ -10,38 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-//extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
-//    
-//    func updateSearchResults(for searchController: UISearchController) {
-//
-////        viewModel.city = viewModel.cityList
-////
-////        searchController.searchBar.rx.text.orEmpty
-////            .distinctUntilChanged()
-////            .subscribe(onNext: { text in
-////                self.viewModel.city = self.viewModel.cityList?.filter{ $0.name.hasPrefix(text) || $0.country.hasPrefix(text) }
-////                self.mainView.collectionView.reloadData()
-////                self.mainView.collectionView.collectionViewLayout.invalidateLayout()
-////            })
-////            .disposed(by: self.disposeBag)
-//    
-//    }
-//    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder() // TextField 비활성화
-//
-//        self.mainView.collectionView.reloadData()
-//
-//        return true
-//    }
-//    
-//}
-
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print(viewModel.cityList?.count ?? 0)
         return viewModel.cityList?.count ?? 0
        
     }

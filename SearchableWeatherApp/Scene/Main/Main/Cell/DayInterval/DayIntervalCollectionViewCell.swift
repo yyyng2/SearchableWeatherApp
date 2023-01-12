@@ -101,8 +101,6 @@ extension DayIntervalCollectionViewCell: UICollectionViewDelegate, UICollectionV
         
         lazy var fiveDays: [Forecast] = viewModel.loadFiveDays()
         
-
-        print(fiveDays)
         if indexPath.item == 0 {
             cell.dayLabel.text = "오늘"
         } else {

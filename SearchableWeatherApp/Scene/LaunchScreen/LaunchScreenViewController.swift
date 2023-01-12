@@ -42,6 +42,9 @@ class LaunchScreenViewController: BaseViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            let searchVM = SearchViewModel()
+            searchVM.decodeJson()
+
             let vc = MainViewController()
             let navi = UINavigationController(rootViewController: vc)
             navi.modalPresentationStyle = .overFullScreen

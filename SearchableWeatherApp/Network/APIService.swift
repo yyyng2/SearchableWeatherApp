@@ -14,20 +14,6 @@ class APIService {
     
     let repository = ForecastRepository()
     
-//    func requestWeather(lat: Double, lon: Double, completionHandler: @escaping (DataResponse<City, AFError>) -> ()) {
-//
-//        let api = WeatherAPI.request(lat: lat, lon: lon, appid: APIKey.openWeather, units: "metric")
-//
-//        User.userLat = lat
-//        User.userLon = lon
-//        print(api.path)
-//
-//        AF.request(api.path, method: .get, parameters: api.parameters, encoding: URLEncoding(arrayEncoding: .noBrackets)).responseDecodable(of: City.self) { response in
-//            print(response)
-//            completionHandler(response)
-//        }
-//    }
-    
     func requestForecast(lat: Double, lon: Double, completionHandler: @escaping ([ForecastModel], [CurrentWeatherModel]) -> ()) {
 
         let api = WeatherAPI.reqeustForecast(lat: lat, lon: lon, appid: APIKey.openWeather, units: "metric")
@@ -78,7 +64,6 @@ class APIService {
                 let humidity = json["list"][0]["main"]["humidity"].intValue
                 
                 let main = json["list"][0]["weather"][0]["main"].stringValue
-                let description = json["list"][0]["weather"][0]["description"].stringValue
                 
                 let clouds = json["list"][0]["clouds"]["all"].intValue
                 

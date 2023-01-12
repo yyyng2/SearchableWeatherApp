@@ -110,7 +110,6 @@ extension TimeIntervalCollectionViewCell: UICollectionViewDelegate, UICollection
             }
             
             guard let time = data[indexPath.item].dt_txt.dateFormatToTime() else { return cell }
-            print(time, distanceHour, indexPath.item)
           
             
             cell.timeLabel.text = "\(time)시"
