@@ -19,6 +19,10 @@ final class SearchViewController: BaseViewController {
     
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 120, height: 0))
     
+    let tapGesture = UITapGestureRecognizer()
+    
+    let swipeGesture = UISwipeGestureRecognizer()
+    
     let cancelButton = UIBarButtonItem(title: "Cancel")
     
     override func loadView() {
@@ -28,10 +32,10 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.placeholder = "Search"
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        DispatchQueue.main.async {
+          self.searchBar.becomeFirstResponder()
+        }
+        mainView.addGestureRecognizer(tapGesture)
     }
     
     override func setNavigation() {
@@ -92,6 +96,21 @@ final class SearchViewController: BaseViewController {
                 
             }
             .disposed(by: disposeBag)
+        
+        mainView.collectionView.rx.willBeginDragging
+            .bind(onNext: { value in
+                self.searchBar.endEditing(true)
+            })
+            .disposed(by: disposeBag)
+        
+        tapGesture.rx.event
+            .bind(onNext: { recognizer in
+                self.searchBar.endEditing(true)
+            })
+            .disposed(by: disposeBag)
+            
+        
+        
     }
     
 }

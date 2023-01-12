@@ -31,26 +31,4 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let data = viewModel.cityList else { return }
-//        
-//        networkMoniter()
-//        APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
-//
-//            let cell = MapCollectionViewCell()
-//            cell.setCenter()
-//            
-//            let vc = SearchViewController()
-//            vc.searchBar.text = ""
-//
-//            self.navigationItem.searchController?.searchBar.text = ""
-//            
-//        }
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-//
-//            self.dismiss(animated: true)
-//        })
-//    }
-    
 }
