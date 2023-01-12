@@ -35,7 +35,6 @@
 		18599C46296E0AA5008223AF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C45296E0AA5008223AF /* Endpoint.swift */; };
 		18599C48296E0B11008223AF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C47296E0B11008223AF /* APIService.swift */; };
 		18599C4C296E11DB008223AF /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C4B296E11DB008223AF /* UserDefaultsHelper.swift */; };
-		18599C4F296E1919008223AF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C4E296E1919008223AF /* Toast */; };
 		18599C52296E438C008223AF /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 18599C51296E438C008223AF /* SwiftyJSON */; };
 		18599C58296E5B97008223AF /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C57296E5B97008223AF /* ForecastModel.swift */; };
 		18599C5B296E5E94008223AF /* CurrentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C5A296E5E94008223AF /* CurrentWeatherModel.swift */; };
@@ -121,7 +120,6 @@
 				18599C2F296DC7E2008223AF /* RxSwift in Frameworks */,
 				18599C32296DC7F7008223AF /* Alamofire in Frameworks */,
 				18599C2D296DC7E2008223AF /* RxCocoa in Frameworks */,
-				18599C4F296E1919008223AF /* Toast in Frameworks */,
 				18599C2A296DC7CF008223AF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +352,6 @@
 				18599C2C296DC7E2008223AF /* RxCocoa */,
 				18599C2E296DC7E2008223AF /* RxSwift */,
 				18599C31296DC7F7008223AF /* Alamofire */,
-				18599C4E296E1919008223AF /* Toast */,
 				18599C51296E438C008223AF /* SwiftyJSON */,
 				18599C67296EE3ED008223AF /* Realm */,
 				18599C69296EE3ED008223AF /* RealmSwift */,
@@ -391,7 +388,6 @@
 				18599C28296DC7CF008223AF /* XCRemoteSwiftPackageReference "SnapKit" */,
 				18599C2B296DC7E2008223AF /* XCRemoteSwiftPackageReference "RxSwift" */,
 				18599C30296DC7F7008223AF /* XCRemoteSwiftPackageReference "Alamofire" */,
-				18599C4D296E1919008223AF /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				18599C50296E438C008223AF /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				18599C66296EE3ED008223AF /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
@@ -704,14 +700,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		18599C4D296E1919008223AF /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		18599C50296E438C008223AF /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
@@ -750,11 +738,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18599C30296DC7F7008223AF /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		18599C4E296E1919008223AF /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 18599C4D296E1919008223AF /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
 		};
 		18599C51296E438C008223AF /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
