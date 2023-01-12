@@ -36,12 +36,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         networkMoniter()
         APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
-            let vc = MainViewController()
-            
-            
-         
-            vc.mainView.refresh(refresh: UIRefreshControl())
-          
+
+            let vc = SearchViewController()
+            vc.searchBar.text = ""
+
             self.navigationItem.searchController?.searchBar.text = ""
             
         }
