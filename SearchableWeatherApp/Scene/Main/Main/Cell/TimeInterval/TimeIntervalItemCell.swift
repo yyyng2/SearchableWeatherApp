@@ -52,6 +52,7 @@ final class TimeIntervalItemCell: BaseCollectionViewCell {
         tempLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(weatherImageView.snp.bottom)
+            make.bottom.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
         }
     }
