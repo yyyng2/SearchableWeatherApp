@@ -28,7 +28,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
             searchController.searchBar.rx.text.orEmpty
                 .distinctUntilChanged()
                 .subscribe(onNext: { text in
-                    vc.filterJson(text: text)
+                    vc.viewModel.filterJson(text: text)
                   
                     vc.mainView.collectionView.reloadData()
            

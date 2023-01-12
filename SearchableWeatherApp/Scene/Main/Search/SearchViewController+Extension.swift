@@ -14,17 +14,16 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate, UI
     
     func updateSearchResults(for searchController: UISearchController) {
 
-        viewModel.decodeJson()
-        viewModel.city = viewModel.cityList
-        
-        searchController.searchBar.rx.text.orEmpty
-            .distinctUntilChanged()
-            .subscribe(onNext: { text in
-                self.viewModel.city = self.viewModel.cityList?.filter{ $0.name.hasPrefix(text) || $0.country.hasPrefix(text) }
-                self.mainView.collectionView.reloadData()
-                self.mainView.collectionView.collectionViewLayout.invalidateLayout()
-            })
-            .disposed(by: self.disposeBag)
+//        viewModel.city = viewModel.cityList
+//
+//        searchController.searchBar.rx.text.orEmpty
+//            .distinctUntilChanged()
+//            .subscribe(onNext: { text in
+//                self.viewModel.city = self.viewModel.cityList?.filter{ $0.name.hasPrefix(text) || $0.country.hasPrefix(text) }
+//                self.mainView.collectionView.reloadData()
+//                self.mainView.collectionView.collectionViewLayout.invalidateLayout()
+//            })
+//            .disposed(by: self.disposeBag)
     
     }
     
@@ -42,8 +41,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print(city?.count ?? 0)
-        return city?.count ?? 0
+        print(viewModel.cityList?.count ?? 0)
+        return viewModel.cityList?.count ?? 0
        
     }
     
@@ -51,7 +50,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        guard let data = city else { return cell }
+        guard let data = viewModel.cityList else { return cell }
         
         cell.cityLabel.text = data[indexPath.row].name
         cell.countryLabel.text = data[indexPath.row].country
@@ -61,7 +60,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let data = city else { return }
+        guard let data = viewModel.cityList else { return }
         
         networkMoniter()
         APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in

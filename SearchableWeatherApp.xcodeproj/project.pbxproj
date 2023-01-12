@@ -58,6 +58,7 @@
 		18DB300F296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */; };
 		18DB3011296F2FD3005472A8 /* DayIntervalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */; };
 		18EE09BB297022CC005EF506 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE09BA297022CC005EF506 /* LaunchScreenViewController.swift */; };
+		18EE09BD297029D7005EF506 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE09BC297029D7005EF506 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalCollectionViewCell.swift; sourceTree = "<group>"; };
 		18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalItemCell.swift; sourceTree = "<group>"; };
 		18EE09BA297022CC005EF506 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		18EE09BC297029D7005EF506 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 				18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */,
 				186041BB296FAD5B002DBEF9 /* SearchView.swift */,
 				186041BD296FAE23002DBEF9 /* SearchViewController.swift */,
+				18EE09BC297029D7005EF506 /* SearchViewModel.swift */,
 				186041C1296FB06E002DBEF9 /* SearchViewController+Extension.swift */,
 			);
 			path = Search;
@@ -439,6 +442,7 @@
 				18599C6D296EE5CB008223AF /* ForecastRealmModel.swift in Sources */,
 				18599C17296DC4AE008223AF /* MainViewController.swift in Sources */,
 				18DB3011296F2FD3005472A8 /* DayIntervalItemCell.swift in Sources */,
+				18EE09BD297029D7005EF506 /* SearchViewModel.swift in Sources */,
 				18599C27296DC775008223AF /* BaseCollectionViewCell.swift in Sources */,
 				18599C71296EEA88008223AF /* NetworkMonitor.swift in Sources */,
 				186041AC296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift in Sources */,
