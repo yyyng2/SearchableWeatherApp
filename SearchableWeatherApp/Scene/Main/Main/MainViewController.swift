@@ -39,24 +39,7 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        DispatchQueue.main.async {
-//            self.networkMoniter()
-//            if User.lat == 0.0 {
-//                self.viewModel.requestAPI(requestStyle: .firstRequest)
-//                print(self.viewModel.currentWeather)
-//            } else {
-//                if User.city == "" {
-//                    self.viewModel.requestAPI(requestStyle: .userRequest)
-//                } else {
-//                    let time = self.viewModel.compareDate()
-//                    if time < -1 {
-//                        self.viewModel.requestAPI(requestStyle: .userRequest)
-//                        print(self.viewModel.currentWeather)
-//                    }
-//                }
-//                self.viewModel.tasks = self.repository.fetch()
-//            }
-//        }
+        searchBar.placeholder = "Search"
     }
     
     override func configure() {
