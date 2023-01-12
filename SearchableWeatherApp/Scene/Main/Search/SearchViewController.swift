@@ -19,6 +19,8 @@ class SearchViewController: BaseViewController {
     
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 120, height: 0))
     
+    let cancelButton = UIBarButtonItem(title: "Cancel")
+    
     override func loadView() {
         self.view = mainView
     }
@@ -38,7 +40,7 @@ class SearchViewController: BaseViewController {
     
     override func setNavigation() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Caencel")
+        self.navigationItem.rightBarButtonItem = cancelButton
         self.navigationController?.navigationBar.tintColor = .systemGray2
 //        searchBar.setValue("Cancel", forKey: "cancelButtonText")
 //        searchBar.tintColor = .systemGray2
@@ -54,7 +56,7 @@ class SearchViewController: BaseViewController {
     
     override func binding() {
         
-        searchBar.rx.cancelButtonClicked
+        cancelButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 self.searchBar.searchTextField.text = ""
                 self.dismiss(animated: false)
