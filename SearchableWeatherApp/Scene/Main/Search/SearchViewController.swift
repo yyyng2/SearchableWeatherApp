@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     let mainView = SearchView()
     
     let viewModel = SearchViewModel()
@@ -67,10 +67,6 @@ class SearchViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        
-     
     }
-    
-  
     
 }

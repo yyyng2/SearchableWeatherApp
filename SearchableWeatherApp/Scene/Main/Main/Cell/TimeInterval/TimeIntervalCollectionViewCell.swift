@@ -111,10 +111,8 @@ extension TimeIntervalCollectionViewCell: UICollectionViewDelegate, UICollection
             
             guard let time = data[indexPath.item].dt_txt.dateFormatToTime() else { return cell }
           
-            
             cell.timeLabel.text = "\(time)시"
         }
-        
         
         cell.weatherImageView.image = UIImage(named: "\(data[indexPath.item].icon)")
         cell.tempLabel.text = "\(Int(data[indexPath.item].temp))°"

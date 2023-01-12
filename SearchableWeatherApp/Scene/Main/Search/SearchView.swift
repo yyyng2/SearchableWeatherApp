@@ -9,7 +9,7 @@ import UIKit
 
 final class SearchView: BaseView {
     
-    let viewModel = MainViewModel()
+    private let viewModel = MainViewModel()
     
     let collectionView: UICollectionView = {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)

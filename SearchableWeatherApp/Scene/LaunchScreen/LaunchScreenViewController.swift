@@ -7,11 +7,11 @@
 
 import UIKit
 
-class LaunchScreenViewController: BaseViewController {
+final class LaunchScreenViewController: BaseViewController {
     
-    let viewModel = MainViewModel()
+    private let viewModel = MainViewModel()
     
-    let repository = ForecastRepository()
+    private let repository = ForecastRepository()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

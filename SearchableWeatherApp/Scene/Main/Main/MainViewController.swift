@@ -54,7 +54,6 @@ final class MainViewController: BaseViewController {
     }
     
     override func binding() {
-
         
         searchBar.rx.textDidBeginEditing
             .subscribe(onNext: { [unowned self] in
@@ -66,13 +65,6 @@ final class MainViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-    
-      
-          
-      
-          
     }
-    
-  
     
 }
