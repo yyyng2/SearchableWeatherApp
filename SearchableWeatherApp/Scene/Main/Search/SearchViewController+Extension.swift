@@ -44,13 +44,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
           
             self.navigationItem.searchController?.searchBar.text = ""
             
-           
-                
-              
-            
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-    
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+
             self.dismiss(animated: true)
         })
     }
