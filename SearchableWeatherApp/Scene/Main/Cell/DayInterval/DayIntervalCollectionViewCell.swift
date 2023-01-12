@@ -19,6 +19,8 @@ final class DayIntervalCollectionViewCell: BaseCollectionViewCell {
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
         view.backgroundColor = Constants.BaseColor.cellBackgroundColor
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         return view
     }()
     

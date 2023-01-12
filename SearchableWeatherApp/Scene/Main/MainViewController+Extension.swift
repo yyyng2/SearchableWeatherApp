@@ -36,39 +36,35 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.maxMinLabel.text = "최고: \(Int(User.tempMax))° | 최저: \(Int(User.tempMin))°"
             
             return cell
+            
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeIntervalCollectionViewCell.reuseIdentifier, for: indexPath) as? TimeIntervalCollectionViewCell else { return UICollectionViewCell() }
             
-            cell.backgroundConfiguration?.cornerRadius = 10
-            cell.backgroundView?.layer.cornerRadius = 10
-            cell.backgroundView?.clipsToBounds = true
-            
             cell.windLabel.text = "돌풍의 풍속은 최대 \(Int(User.gust))m/s 입니다."
-            
+            cell.collectionView.reloadData()
             
             return cell
+            
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayIntervalCollectionViewCell.reuseIdentifier, for: indexPath) as? DayIntervalCollectionViewCell else { return UICollectionViewCell() }
             
-            cell.backgroundConfiguration?.cornerRadius = 10
-            cell.backgroundView?.layer.cornerRadius = 10
-            cell.backgroundView?.clipsToBounds = true
-            
-            
+            cell.collectionView.reloadData()
             
             return cell
+            
         case 3:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapCollectionViewCell.reuseIdentifier, for: indexPath) as? MapCollectionViewCell else { return UICollectionViewCell() }
             
-            cell.backgroundConfiguration?.cornerRadius = 10
-            cell.backgroundView?.layer.cornerRadius = 10
-            cell.backgroundView?.clipsToBounds = true
-            
-            
+
+            cell.setCenter()
             
             return cell
+            
         default:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuarteredCollectionViewCell.reuseIdentifier, for: indexPath) as? QuarteredCollectionViewCell else { return UICollectionViewCell() }
+            
+            cell.collectionView.reloadData()
+            
             return cell
             
         }

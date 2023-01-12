@@ -69,14 +69,20 @@ final class MapCollectionViewCell: BaseCollectionViewCell {
 }
 
 extension MapCollectionViewCell: MKMapViewDelegate, CLLocationManagerDelegate {
-   private func setRegionAndAnnotation(coordinate: CLLocationCoordinate2D) {
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000000, longitudinalMeters: 1000000)
-        mapView.setRegion(region, animated: true)
+    private func setRegionAndAnnotation(coordinate: CLLocationCoordinate2D) {
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        annotation.title = User.city
-        mapView.addAnnotation(annotation)
+        DispatchQueue.main.async {
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
+            
+            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000000, longitudinalMeters: 1000000)
+            self.mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = User.city
+            self.mapView.addAnnotation(annotation)
+        }
         
     }
     
@@ -84,5 +90,5 @@ extension MapCollectionViewCell: MKMapViewDelegate, CLLocationManagerDelegate {
         let center = CLLocationCoordinate2D(latitude: User.userLat, longitude: User.userLon)
         setRegionAndAnnotation(coordinate: center)
     }
-  
+    
 }

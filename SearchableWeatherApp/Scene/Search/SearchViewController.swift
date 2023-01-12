@@ -67,6 +67,31 @@ final class SearchViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        mainView.collectionView.rx.itemSelected
+            .asSignal()
+            .emit { [self] indexPath in
+                guard let data = viewModel.cityList else { return }
+                
+                networkMoniter()
+                APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
+                    print("searchTap")
+                    let cell = MapCollectionViewCell()
+                    cell.setCenter()
+      
+                    let vc = SearchViewController()
+                    vc.searchBar.text = ""
+
+                    self.navigationItem.searchController?.searchBar.text = ""
+                    
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+
+                    self.dismiss(animated: true)
+                })
+                
+            }
+            .disposed(by: disposeBag)
     }
     
 }
