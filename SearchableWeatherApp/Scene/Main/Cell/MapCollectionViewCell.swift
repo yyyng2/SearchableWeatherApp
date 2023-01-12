@@ -42,7 +42,6 @@ class MapCollectionViewCell: BaseCollectionViewCell {
     override func configure() {
         locationManager.delegate = self
         mapView.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
         
         [background, precipitationLabel, mapView].forEach {
             addSubview($0)

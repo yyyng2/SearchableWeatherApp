@@ -9,6 +9,10 @@ import UIKit
 
 class MainView: BaseView {
     
+    let viewModel = MainViewModel()
+    
+    private var refreshControl = UIRefreshControl()
+    
     let searchBar: UISearchController = {
         
        let bar = UISearchController()
@@ -31,7 +35,7 @@ class MainView: BaseView {
     }()
     
     let collectionView: UICollectionView = {
-        
+        let refreshControl = UIRefreshControl()
         let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().getSectionLayout())
         view.backgroundColor = Constants.BaseColor.clear
         
@@ -41,9 +45,21 @@ class MainView: BaseView {
         view.register(DayIntervalCollectionViewCell.self, forCellWithReuseIdentifier: DayIntervalCollectionViewCell.reuseIdentifier)
         view.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: MapCollectionViewCell.reuseIdentifier)
         view.register(QuarteredCollectionViewCell.self, forCellWithReuseIdentifier: QuarteredCollectionViewCell.reuseIdentifier)
+        
+        view.refreshControl = refreshControl
+        
         return view
         
     }()
+    
+    @objc func refresh(refresh: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.collectionView)
+          
+            refresh.endRefreshing()
+        }
+        
+    }
     
     override internal func configure() {
         
@@ -52,6 +68,9 @@ class MainView: BaseView {
         [collectionView].forEach {
             self.addSubview($0)
         }
+        
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh(refresh:)), for: .valueChanged)
         
     }
     

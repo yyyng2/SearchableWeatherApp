@@ -168,8 +168,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     self.navigationItem.searchController?.searchBar.text = ""
                     
                     self.dismiss(animated: true)
-              
-                    
           
                 }
               

@@ -19,7 +19,7 @@ class MainViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
-    let repository = ForecastRepository()    
+    let repository = ForecastRepository()
     
     override func loadView() {
         self.view = mainView
@@ -52,6 +52,7 @@ class MainViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
         mainView.searchBar.delegate = self
+     
     }
     
     override func setNavigation() {
@@ -66,5 +67,7 @@ class MainViewController: BaseViewController {
         
           
     }
+    
+  
     
 }

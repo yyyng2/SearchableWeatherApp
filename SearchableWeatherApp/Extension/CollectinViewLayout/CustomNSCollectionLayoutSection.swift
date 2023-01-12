@@ -10,9 +10,10 @@ import UIKit
 class CustomNSCollectionLayoutSection {
     
     func getSectionLayout() -> UICollectionViewCompositionalLayout {
-        
+     
         UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
             let viewModel = MainViewModel()
+            
             switch viewModel.isSearching {
             case true:
                 switch section {
@@ -243,7 +244,7 @@ class CustomNSCollectionLayoutSection {
            
            // Section
            let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 2.5, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 2.5 , trailing: 0)
            
            return UICollectionViewCompositionalLayout(section: section)
     }
