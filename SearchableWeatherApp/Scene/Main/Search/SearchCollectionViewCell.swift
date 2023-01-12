@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class SearchCollectionViewCell: BaseCollectionViewCell {
+final class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let cityLabel: UILabel = {
        let label = UILabel()

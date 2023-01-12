@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapCollectionViewCell: BaseCollectionViewCell {
+final class MapCollectionViewCell: BaseCollectionViewCell {
     
     let locationManager = CLLocationManager()
     

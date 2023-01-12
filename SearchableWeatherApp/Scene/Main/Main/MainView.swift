@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainView: BaseView {
+final class MainView: BaseView {
     
     let viewModel = MainViewModel()
     
@@ -15,7 +15,7 @@ class MainView: BaseView {
     
     let searchBar: UISearchController = {
         
-       let bar = UISearchController()
+       let bar = UISearchController(searchResultsController: SearchViewController())
         
         //CancelButton Color
         bar.searchBar.setValue("Cancel", forKey: "cancelButtonText")
@@ -39,7 +39,7 @@ class MainView: BaseView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: CustomNSCollectionLayoutSection().getSectionLayout())
         view.backgroundColor = Constants.BaseColor.clear
         
-        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
+//        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.register(CurrentLocationWeatherCollectionViewCell.self, forCellWithReuseIdentifier: CurrentLocationWeatherCollectionViewCell.reuseIdentifier)
         view.register(TimeIntervalCollectionViewCell.self, forCellWithReuseIdentifier: TimeIntervalCollectionViewCell.reuseIdentifier)
         view.register(DayIntervalCollectionViewCell.self, forCellWithReuseIdentifier: DayIntervalCollectionViewCell.reuseIdentifier)
@@ -53,12 +53,13 @@ class MainView: BaseView {
     }()
     
     @objc func refresh(refresh: UIRefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.viewModel.requestAPI(requestStyle: .userRequest, collectionView: self.collectionView)
-          
+        DispatchQueue.main.async {
+
+            
             refresh.endRefreshing()
         }
-        
+        self.viewModel.requestAPI(requestStyle: .userRequest)
+        collectionView.reloadData()
     }
     
     override internal func configure() {

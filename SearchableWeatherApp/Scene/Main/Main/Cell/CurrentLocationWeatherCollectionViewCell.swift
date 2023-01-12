@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrentLocationWeatherCollectionViewCell: BaseCollectionViewCell {
+final class CurrentLocationWeatherCollectionViewCell: BaseCollectionViewCell {
     let cityLabel: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 36, weight: .medium)

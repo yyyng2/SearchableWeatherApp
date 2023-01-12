@@ -9,7 +9,7 @@ import UIKit
 
 import RealmSwift
 
-class DayIntervalCollectionViewCell: BaseCollectionViewCell {
+final class DayIntervalCollectionViewCell: BaseCollectionViewCell {
     lazy var viewModel = MainViewModel()
     
     let repository = ForecastRepository()

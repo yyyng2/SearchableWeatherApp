@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuarteredItemCell: BaseCollectionViewCell {
+final class QuarteredItemCell: BaseCollectionViewCell {
     let background: UIView = {
        let view = UIView()
         view.clipsToBounds = true

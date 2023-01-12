@@ -29,7 +29,7 @@
 		18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */; };
 		18599C3C296DEBC9008223AF /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 18599C3B296DEBC8008223AF /* CityList.json */; };
 		18599C3E296DEBDB008223AF /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C3D296DEBDB008223AF /* CityModel.swift */; };
-		18599C40296DEC68008223AF /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C3F296DEC68008223AF /* MainViewControllerExtension.swift */; };
+		18599C40296DEC68008223AF /* MainViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C3F296DEC68008223AF /* MainViewController+Extension.swift */; };
 		18599C42296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */; };
 		18599C44296E09EC008223AF /* TimeIntervalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C43296E09EC008223AF /* TimeIntervalCollectionViewCell.swift */; };
 		18599C46296E0AA5008223AF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18599C45296E0AA5008223AF /* Endpoint.swift */; };
@@ -52,8 +52,12 @@
 		186041AC296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041AB296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift */; };
 		186041B4296F627D002DBEF9 /* QuarteredItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041B3296F627D002DBEF9 /* QuarteredItemCell.swift */; };
 		186041B6296F670C002DBEF9 /* QuarteredInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041B5296F670C002DBEF9 /* QuarteredInfo.swift */; };
+		186041BC296FAD5B002DBEF9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041BB296FAD5B002DBEF9 /* SearchView.swift */; };
+		186041BE296FAE23002DBEF9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041BD296FAE23002DBEF9 /* SearchViewController.swift */; };
+		186041C2296FB06F002DBEF9 /* SearchViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186041C1296FB06E002DBEF9 /* SearchViewController+Extension.swift */; };
 		18DB300F296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */; };
 		18DB3011296F2FD3005472A8 /* DayIntervalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */; };
+		18EE09BB297022CC005EF506 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE09BA297022CC005EF506 /* LaunchScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +81,7 @@
 		18599C36296DCA37008223AF /* CustomNSCollectionLayoutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSCollectionLayoutSection.swift; sourceTree = "<group>"; };
 		18599C3B296DEBC8008223AF /* CityList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
 		18599C3D296DEBDB008223AF /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
-		18599C3F296DEC68008223AF /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
+		18599C3F296DEC68008223AF /* MainViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Extension.swift"; sourceTree = "<group>"; };
 		18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		18599C43296E09EC008223AF /* TimeIntervalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalCollectionViewCell.swift; sourceTree = "<group>"; };
 		18599C45296E0AA5008223AF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -96,8 +100,12 @@
 		186041AB296F5A6A002DBEF9 /* QuarteredCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarteredCollectionViewCell.swift; sourceTree = "<group>"; };
 		186041B3296F627D002DBEF9 /* QuarteredItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarteredItemCell.swift; sourceTree = "<group>"; };
 		186041B5296F670C002DBEF9 /* QuarteredInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarteredInfo.swift; sourceTree = "<group>"; };
+		186041BB296FAD5B002DBEF9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		186041BD296FAE23002DBEF9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		186041C1296FB06E002DBEF9 /* SearchViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Extension.swift"; sourceTree = "<group>"; };
 		18DB300E296F2E6D005472A8 /* DayIntervalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalCollectionViewCell.swift; sourceTree = "<group>"; };
 		18DB3010296F2FD3005472A8 /* DayIntervalItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalItemCell.swift; sourceTree = "<group>"; };
+		18EE09BA297022CC005EF506 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +177,7 @@
 		18599C10296DC42E008223AF /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				18EE09B9297022B8005EF506 /* LaunchScreen */,
 				18599C15296DC4A1008223AF /* Main */,
 			);
 			path = Scene;
@@ -198,11 +207,8 @@
 		18599C15296DC4A1008223AF /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				18599C23296DC73C008223AF /* Cell */,
-				18599C16296DC4AE008223AF /* MainViewController.swift */,
-				18599C3F296DEC68008223AF /* MainViewControllerExtension.swift */,
-				18599C18296DC4B9008223AF /* MainView.swift */,
-				18599C1A296DC4C8008223AF /* MainViewModel.swift */,
+				186041C0296FAE45002DBEF9 /* Search */,
+				186041BF296FAE28002DBEF9 /* Main */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -225,7 +231,6 @@
 				186041AF296F6221002DBEF9 /* TimeInterval */,
 				186041A9296F4D65002DBEF9 /* MapCollectionViewCell.swift */,
 				18599C41296E09B7008223AF /* CurrentLocationWeatherCollectionViewCell.swift */,
-				18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -292,6 +297,37 @@
 				186041B5296F670C002DBEF9 /* QuarteredInfo.swift */,
 			);
 			path = Quartered;
+			sourceTree = "<group>";
+		};
+		186041BF296FAE28002DBEF9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				18599C23296DC73C008223AF /* Cell */,
+				18599C16296DC4AE008223AF /* MainViewController.swift */,
+				18599C3F296DEC68008223AF /* MainViewController+Extension.swift */,
+				18599C18296DC4B9008223AF /* MainView.swift */,
+				18599C1A296DC4C8008223AF /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		186041C0296FAE45002DBEF9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				18599C24296DC74C008223AF /* SearchCollectionViewCell.swift */,
+				186041BB296FAD5B002DBEF9 /* SearchView.swift */,
+				186041BD296FAE23002DBEF9 /* SearchViewController.swift */,
+				186041C1296FB06E002DBEF9 /* SearchViewController+Extension.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		18EE09B9297022B8005EF506 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				18EE09BA297022CC005EF506 /* LaunchScreenViewController.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,16 +421,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EE09BB297022CC005EF506 /* LaunchScreenViewController.swift in Sources */,
+				186041C2296FB06F002DBEF9 /* SearchViewController+Extension.swift in Sources */,
 				18599C65296ECA99008223AF /* Date+Extension.swift in Sources */,
 				18599BF4296DB7D5008223AF /* AppDelegate.swift in Sources */,
 				186041AA296F4D65002DBEF9 /* MapCollectionViewCell.swift in Sources */,
-				18599C40296DEC68008223AF /* MainViewControllerExtension.swift in Sources */,
+				18599C40296DEC68008223AF /* MainViewController+Extension.swift in Sources */,
 				18599C5B296E5E94008223AF /* CurrentWeatherModel.swift in Sources */,
 				18599C14296DC45F008223AF /* APIKey.swift in Sources */,
 				18599C5D296E6AEA008223AF /* TimeIntervalItemCell.swift in Sources */,
 				186041B4296F627D002DBEF9 /* QuarteredItemCell.swift in Sources */,
 				18599C63296EC768008223AF /* Color.swift in Sources */,
 				18599BF6296DB7D5008223AF /* SceneDelegate.swift in Sources */,
+				186041BC296FAD5B002DBEF9 /* SearchView.swift in Sources */,
 				18599C19296DC4B9008223AF /* MainView.swift in Sources */,
 				18599C3E296DEBDB008223AF /* CityModel.swift in Sources */,
 				18599C6D296EE5CB008223AF /* ForecastRealmModel.swift in Sources */,
@@ -414,6 +453,7 @@
 				18599C58296E5B97008223AF /* ForecastModel.swift in Sources */,
 				18599C37296DCA37008223AF /* CustomNSCollectionLayoutSection.swift in Sources */,
 				18599C20296DC526008223AF /* BaseViewController.swift in Sources */,
+				186041BE296FAE23002DBEF9 /* SearchViewController.swift in Sources */,
 				18599C1B296DC4C8008223AF /* MainViewModel.swift in Sources */,
 				18599C22296DC52B008223AF /* BaseView.swift in Sources */,
 				18599C46296E0AA5008223AF /* Endpoint.swift in Sources */,

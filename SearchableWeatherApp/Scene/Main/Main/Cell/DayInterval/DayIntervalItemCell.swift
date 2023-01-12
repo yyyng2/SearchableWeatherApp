@@ -7,12 +7,12 @@
 
 import UIKit
 
-class DayIntervalItemCell: BaseCollectionViewCell {
+final class DayIntervalItemCell: BaseCollectionViewCell {
     
     let dayLabel: UILabel = {
        let label = UILabel()
         label.text = "오늘"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 16)
         label.textAlignment = .center
         return label
     }()
@@ -26,7 +26,7 @@ class DayIntervalItemCell: BaseCollectionViewCell {
     let tempMinLabel: UILabel = {
        let label = UILabel()
         label.text = "temp_min"
-        label.font = .systemFont(ofSize: 16, weight: .light)
+        label.font = .systemFont(ofSize: 12, weight: .light)
         label.textAlignment = .center
         return label
     }()
@@ -34,7 +34,7 @@ class DayIntervalItemCell: BaseCollectionViewCell {
     let tempMaxLabel: UILabel = {
        let label = UILabel()
         label.text = "temp_max"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 16)
         label.textAlignment = .center
         return label
     }()

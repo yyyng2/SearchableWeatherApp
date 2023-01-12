@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuarteredCollectionViewCell: BaseCollectionViewCell {
+final class QuarteredCollectionViewCell: BaseCollectionViewCell {
     
     lazy var collectionView: UICollectionView = {
       

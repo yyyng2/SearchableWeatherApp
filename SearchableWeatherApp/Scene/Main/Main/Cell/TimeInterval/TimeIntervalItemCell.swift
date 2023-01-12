@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimeIntervalItemCell: BaseCollectionViewCell {
+final class TimeIntervalItemCell: BaseCollectionViewCell {
     
     let timeLabel: UILabel = {
        let label = UILabel()

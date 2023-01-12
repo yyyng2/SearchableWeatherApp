@@ -12,7 +12,7 @@ import RealmSwift
 import RxSwift
 import RxCocoa
 
-class MainViewModel {
+final class MainViewModel {
     
     var cityList: CityModel?
     
@@ -43,7 +43,7 @@ class MainViewModel {
         return date
     }
     
-    public func requestAPI(requestStyle: requestStyle, collectionView: UICollectionView) {
+    public func requestAPI(requestStyle: requestStyle) {
        
         switch requestStyle {
         case .firstRequest:
@@ -51,7 +51,7 @@ class MainViewModel {
                 self.currentForecast = ForecastModel
                 self.currentWeather = CurrentWeatherModel
              
-                collectionView.reloadData()
+             
                 let cell = TimeIntervalCollectionViewCell()
                 cell.collectionView.reloadData()
                 let mapViewCell = MapCollectionViewCell()
@@ -62,7 +62,7 @@ class MainViewModel {
                 self.currentForecast = ForecastModel
                 self.currentWeather = CurrentWeatherModel
                 print(self.currentForecast)
-                collectionView.reloadData()
+             
                 
                 let cell = TimeIntervalCollectionViewCell()
                 cell.collectionView.reloadData()

@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.overrideUserInterfaceStyle = .dark
         
         
-        let viewController = MainViewController()
+        let viewController = LaunchScreenViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
        
         
