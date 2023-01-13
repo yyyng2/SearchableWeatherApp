@@ -9,8 +9,6 @@ import UIKit
 
 final class SearchView: BaseView {
     
-    private let viewModel = MainViewModel()
-    
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 120, height: 0))
     
     let cancelButton = UIBarButtonItem(title: "Cancel")

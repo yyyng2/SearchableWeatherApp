@@ -19,7 +19,6 @@ final class SearchViewController: BaseViewController {
     
     let swipeGesture = UISwipeGestureRecognizer()
     
-    
     override func loadView() {
         self.view = mainView
     }
