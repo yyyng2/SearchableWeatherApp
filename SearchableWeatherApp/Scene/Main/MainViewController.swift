@@ -19,8 +19,6 @@ final class MainViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
-    let repository = ForecastRepository()
-    
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 28, height: 0))
     
     override func loadView() {
@@ -30,7 +28,7 @@ final class MainViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
-        viewModel.tasks = repository.fetch()
+        viewModel.tasks = viewModel.repository.fetch()
         mainView.collectionView.reloadData()
     
     }
