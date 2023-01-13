@@ -35,16 +35,6 @@ final class MainViewModel {
     
     lazy var isSearching = false
     
-    public func cellCollectionViewReload() {
-        let cell = [TimeIntervalCollectionViewCell(), DayIntervalCollectionViewCell(), QuarteredCollectionViewCell()]
-        let timeCell = TimeIntervalCollectionViewCell()
-        timeCell.collectionView.reloadData()
-        let dayCell = DayIntervalCollectionViewCell()
-        dayCell.collectionView.reloadData()
-        let quarteredCell = QuarteredCollectionViewCell()
-        quarteredCell.collectionView.reloadData()
-    }
-    
     public func compareDate() -> Int {
 
         guard let date = Calendar.current.dateComponents([.hour], from: Date(), to: User.lastUpdate).hour else { return 3 }
