@@ -86,7 +86,7 @@ extension MapCollectionViewCell: MKMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
-    public func setCenter() {
+    internal func setCenter() {
         let center = CLLocationCoordinate2D(latitude: User.userLat, longitude: User.userLon)
         setRegionAndAnnotation(coordinate: center)
     }

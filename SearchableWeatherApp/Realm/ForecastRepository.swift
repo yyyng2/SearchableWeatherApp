@@ -19,7 +19,7 @@ final class ForecastRepository: ForecastRepositoryType {
 
     let localRealm = try! Realm()
     
-    public func addRecord(record: Forecast) {
+    internal func addRecord(record: Forecast) {
         do {
             try localRealm.write {
                 localRealm.add(record)
@@ -30,15 +30,15 @@ final class ForecastRepository: ForecastRepositoryType {
         
     }
 
-    public func fetch() -> Results<Forecast> {
+    internal func fetch() -> Results<Forecast> {
         return localRealm.objects(Forecast.self).sorted(byKeyPath: "dt_txt", ascending: true)
     }
     
-    public func fetchFilterDate(date: Date) -> Results<Forecast> {
+    internal func fetchFilterDate(date: Date) -> Results<Forecast> {
         return localRealm.objects(Forecast.self).filter("dt_txt == %@", date).sorted(byKeyPath: "dt_txt", ascending: true)
     }
     
-    public func deleteById(id: ObjectId) {
+    internal func deleteById(id: ObjectId) {
 
         let task = localRealm.object(ofType: Forecast.self, forPrimaryKey: id)
         do {
@@ -51,7 +51,7 @@ final class ForecastRepository: ForecastRepositoryType {
     }
     
     
-    public func deleteAll() {
+    internal func deleteAll() {
         try! localRealm.write {
             localRealm.deleteAll()
         }

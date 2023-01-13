@@ -35,14 +35,14 @@ final class MainViewModel {
     
     lazy var isSearching = false
     
-    public func compareDate() -> Int {
+    internal func compareDate() -> Int {
 
         guard let date = Calendar.current.dateComponents([.hour], from: Date(), to: User.lastUpdate).hour else { return 3 }
 
         return date
     }
     
-    public func requestAPI(requestStyle: requestStyle) {
+    internal func requestAPI(requestStyle: requestStyle) {
        
         switch requestStyle {
         case .firstRequest:
@@ -70,7 +70,7 @@ final class MainViewModel {
       
     }
     
-    public func loadFiveDays() -> [Forecast] {
+    internal func loadFiveDays() -> [Forecast] {
         let today = Date()
         let dayOne = repository.fetch()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)

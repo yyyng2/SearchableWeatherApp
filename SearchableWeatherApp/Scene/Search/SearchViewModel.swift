@@ -10,14 +10,14 @@ import Foundation
 final class SearchViewModel {
     var cityList: CityModel?
     
-    public func filterJson(text: String) {
+    internal func filterJson(text: String) {
         decodeJson()
         
         guard let data = cityList else { return }
         cityList = data.filter{ $0.name.hasPrefix(text) || $0.country.hasPrefix(text) }
     }
     
-    public func decodeJson() {
+    internal func decodeJson() {
         
         guard let cityData = loadCity() else { return }
 

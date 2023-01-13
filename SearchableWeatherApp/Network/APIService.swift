@@ -14,7 +14,7 @@ final class APIService {
     
     private let repository = ForecastRepository()
     
-    public func requestForecast(lat: Double, lon: Double, completionHandler: @escaping ([ForecastModel], [CurrentWeatherModel]) -> ()) {
+    internal func requestForecast(lat: Double, lon: Double, completionHandler: @escaping ([ForecastModel], [CurrentWeatherModel]) -> ()) {
 
         let api = WeatherAPI.reqeustForecast(lat: lat, lon: lon, appid: APIKey.openWeather, units: "metric")
 

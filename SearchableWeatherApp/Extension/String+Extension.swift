@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    public func stringFormatToDate() -> Date {
+    func stringFormatToDate() -> Date {
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -18,7 +18,7 @@ extension String {
         return date
     }
     
-    public func stringFormatToTime() -> Date? {
+    func stringFormatToTime() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.locale = Locale.current
@@ -30,7 +30,7 @@ extension String {
         return date
     }
     
-    public func stringFormatToDay() -> Date? {
+    func stringFormatToDay() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.locale = Locale.current
@@ -42,7 +42,7 @@ extension String {
         return date
     }
     
-    public func stringFormatToDateYyyyMmDd() -> Date {
+    func stringFormatToDateYyyyMmDd() -> Date {
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
