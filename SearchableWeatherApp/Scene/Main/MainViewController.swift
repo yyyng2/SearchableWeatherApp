@@ -19,8 +19,6 @@ final class MainViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
-    let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 28, height: 0))
-    
     override func loadView() {
         self.view = mainView
     }
@@ -35,7 +33,7 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.placeholder = "Search"
+        mainView.searchBar.placeholder = "Search"
     }
     
     override func configure() {
@@ -44,8 +42,7 @@ final class MainViewController: BaseViewController {
     }
     
     override func setNavigation() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-        mainView.searchBar.hidesNavigationBarDuringPresentation = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: mainView.searchBar)
         
         self.navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
         self.navigationItem.hidesSearchBarWhenScrolling = false
@@ -53,7 +50,7 @@ final class MainViewController: BaseViewController {
     
     override func binding() {
         
-        searchBar.rx.textDidBeginEditing
+        mainView.searchBar.rx.textDidBeginEditing
             .subscribe(onNext: { [unowned self] in
                 let vc = SearchViewController()
                 let navi = UINavigationController(rootViewController: vc)

@@ -13,26 +13,7 @@ final class MainView: BaseView {
     
     private var refreshControl = UIRefreshControl()
     
-    let searchBar: UISearchController = {
-        
-       let bar = UISearchController(searchResultsController: SearchViewController())
-        
-        //CancelButton Color
-        bar.searchBar.setValue("Cancel", forKey: "cancelButtonText")
-        bar.searchBar.tintColor = .systemGray2
-        
-        //placeholder Color
-        bar.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray2])
-        bar.searchBar.searchTextField.backgroundColor = Constants.BaseColor.searchBarBackgroundColor
-        
-        //Magnifying Icon Color
-        let magnifyingIconView = bar.searchBar.searchTextField.leftView as! UIImageView
-        magnifyingIconView.image = magnifyingIconView.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        magnifyingIconView.tintColor = .systemGray2
-        
-        return bar
-        
-    }()
+    let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 28, height: 0))
     
     let collectionView: UICollectionView = {
         let refreshControl = UIRefreshControl()

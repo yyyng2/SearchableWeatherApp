@@ -17,11 +17,8 @@ final class SearchViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
-    let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 120, height: 0))
-    
     let swipeGesture = UISwipeGestureRecognizer()
     
-    let cancelButton = UIBarButtonItem(title: "Cancel")
     
     override func loadView() {
         self.view = mainView
@@ -29,15 +26,15 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.placeholder = "Search"
+        mainView.searchBar.placeholder = "Search"
         DispatchQueue.main.async {
-          self.searchBar.becomeFirstResponder()
+            self.mainView.searchBar.becomeFirstResponder()
         }
     }
     
     override func setNavigation() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
-        self.navigationItem.rightBarButtonItem = cancelButton
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: mainView.searchBar)
+        self.navigationItem.rightBarButtonItem = mainView.cancelButton
         self.navigationController?.navigationBar.tintColor = .systemGray2
 
         self.navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
@@ -51,18 +48,18 @@ final class SearchViewController: BaseViewController {
     
     override func binding() {
         
-        cancelButton.rx.tap
+        mainView.cancelButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                self.searchBar.searchTextField.text = ""
+                self.mainView.searchBar.searchTextField.text = ""
                 self.dismiss(animated: false)
             })
             .disposed(by: disposeBag)
         
-        searchBar.searchTextField.rx.text
+        mainView.searchBar.searchTextField.rx.text
             .orEmpty
             .distinctUntilChanged()
             .subscribe(onNext: { text in
-                guard let text = self.searchBar.searchTextField.text else { return }
+                guard let text = self.mainView.searchBar.searchTextField.text else { return }
                 self.viewModel.filterJson(text: "\(text)")
                 self.mainView.collectionView.reloadData()
             })
@@ -80,7 +77,7 @@ final class SearchViewController: BaseViewController {
                     cell.setCenter()
       
                     let vc = SearchViewController()
-                    vc.searchBar.text = ""
+                    vc.mainView.searchBar.text = ""
 
                     self.navigationItem.searchController?.searchBar.text = ""
                     
@@ -96,7 +93,7 @@ final class SearchViewController: BaseViewController {
         
         mainView.collectionView.rx.willBeginDragging
             .bind(onNext: { value in
-                self.searchBar.endEditing(true)
+                self.mainView.searchBar.endEditing(true)
             })
             .disposed(by: disposeBag)
             

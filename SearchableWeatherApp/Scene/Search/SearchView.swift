@@ -11,6 +11,10 @@ final class SearchView: BaseView {
     
     private let viewModel = MainViewModel()
     
+    let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 120, height: 0))
+    
+    let cancelButton = UIBarButtonItem(title: "Cancel")
+    
     let collectionView: UICollectionView = {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         configuration.backgroundColor = UIColor.clear
@@ -20,27 +24,6 @@ final class SearchView: BaseView {
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
       
         return view
-        
-    }()
-    
-    let searchBar: UISearchController = {
-        
-       let bar = UISearchController()
-        
-        //CancelButton Color
-        bar.searchBar.setValue("Cancel", forKey: "cancelButtonText")
-        bar.searchBar.tintColor = .systemGray2
-        
-        //placeholder Color
-        bar.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray2])
-        bar.searchBar.searchTextField.backgroundColor = Constants.BaseColor.searchBarBackgroundColor
-        
-        //Magnifying Icon Color
-        let magnifyingIconView = bar.searchBar.searchTextField.leftView as! UIImageView
-        magnifyingIconView.image = magnifyingIconView.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        magnifyingIconView.tintColor = .systemGray2
-        
-        return bar
         
     }()
     
