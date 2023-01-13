@@ -58,7 +58,6 @@ final class MainView: BaseView {
             refresh.endRefreshing()
         }
         self.viewModel.requestAPI(requestStyle: .userRequest)
-        viewModel.cellCollectionViewReload()
         collectionView.reloadData()
     }
     
