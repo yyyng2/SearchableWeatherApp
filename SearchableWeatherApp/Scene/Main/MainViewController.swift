@@ -31,7 +31,6 @@ final class MainViewController: BaseViewController {
         super.viewWillAppear(animated)
        
         viewModel.tasks = repository.fetch()
-        viewModel.cellCollectionViewReload()
         mainView.collectionView.reloadData()
     
     }
