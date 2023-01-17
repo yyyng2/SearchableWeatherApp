@@ -47,4 +47,18 @@ final class SearchViewModel {
             return nil
         }
     }
+    
+    internal func requestAPI(indexPath: IndexPath) {
+        
+        guard let data = cityList else { return }
+        
+        APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
+            let cell = MapCollectionViewCell()
+            cell.setCenter()
+
+            let vc = SearchViewController()
+            vc.mainView.searchBar.text = ""
+        }
+    }
+    
 }

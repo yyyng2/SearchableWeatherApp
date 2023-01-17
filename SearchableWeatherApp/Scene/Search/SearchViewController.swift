@@ -67,22 +67,12 @@ final class SearchViewController: BaseViewController {
         mainView.collectionView.rx.itemSelected
             .asSignal()
             .emit { [self] indexPath in
-                guard let data = viewModel.cityList else { return }
                 
                 networkMoniter()
-                APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
-                    let cell = MapCollectionViewCell()
-                    cell.setCenter()
-      
-                    let vc = SearchViewController()
-                    vc.mainView.searchBar.text = ""
-
-                    self.navigationItem.searchController?.searchBar.text = ""
-                    
-                }
+                viewModel.requestAPI(indexPath: indexPath)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-
+                    self.navigationItem.searchController?.searchBar.text = ""
                     self.dismiss(animated: true)
                 })
                 
