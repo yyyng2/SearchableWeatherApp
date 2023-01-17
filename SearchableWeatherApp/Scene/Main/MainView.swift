@@ -38,7 +38,7 @@ final class MainView: BaseView {
             
             refresh.endRefreshing()
         }
-        self.viewModel.requestAPI(requestStyle: .userRequest)
+        self.viewModel.requestAPI()
         collectionView.reloadData()
     }
     

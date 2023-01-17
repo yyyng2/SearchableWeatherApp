@@ -71,7 +71,6 @@ final class SearchViewController: BaseViewController {
                 
                 networkMoniter()
                 APIService().requestForecast(lat: data[indexPath.row].coord.lat, lon: data[indexPath.row].coord.lon) { ForecastModel, CurrentWeatherModel in
-                    print("searchTap")
                     let cell = MapCollectionViewCell()
                     cell.setCenter()
       

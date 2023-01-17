@@ -19,8 +19,8 @@ extension UIViewController {
                     return
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.showRequestNetworkServiceAlert()
+                DispatchQueue.main.async { [unowned self] in
+                    showRequestNetworkServiceAlert()
                 }
             }
         }

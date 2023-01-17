@@ -37,68 +37,48 @@ final class MainViewModel {
     
     internal func compareDate() -> Int {
 
-        guard let date = Calendar.current.dateComponents([.hour], from: Date(), to: User.lastUpdate).hour else { return 3 }
-
-        return date
+        guard let time = Calendar.current.dateComponents([.hour], from: User.lastUpdate, to: Date()).hour else { return 3 }
+        print(time, User.lastUpdate, Date())
+        return time
     }
     
-    internal func requestAPI(requestStyle: requestStyle) {
+    internal func requestAPI() {
        
-        switch requestStyle {
-        case .firstRequest:
-            APIService().requestForecast(lat: 36.783611, lon: 127.004173) { ForecastModel, CurrentWeatherModel in
-                self.currentForecast = ForecastModel
-                self.currentWeather = CurrentWeatherModel
-             
-             
-                let cell = TimeIntervalCollectionViewCell()
-                cell.collectionView.reloadData()
-                let mapViewCell = MapCollectionViewCell()
-                mapViewCell.setCenter()
-            }
-        case .userRequest:
-            APIService().requestForecast(lat: User.userLat, lon: User.userLon) { ForecastModel, CurrentWeatherModel in
-                self.currentForecast = ForecastModel
-                self.currentWeather = CurrentWeatherModel
-                
-                let cell = TimeIntervalCollectionViewCell()
-                cell.collectionView.reloadData()
-                let mapViewCell = MapCollectionViewCell()
-                mapViewCell.setCenter()
-            }
+        APIService().requestForecast(lat: User.userLat, lon: User.userLon) { ForecastModel, CurrentWeatherModel in
+            self.currentForecast = ForecastModel
+            self.currentWeather = CurrentWeatherModel
+            
+            
+            let cell = TimeIntervalCollectionViewCell()
+            cell.collectionView.reloadData()
+            let mapViewCell = MapCollectionViewCell()
+            mapViewCell.setCenter()
         }
       
     }
     
     internal func loadFiveDays() -> [Forecast] {
-        let today = Date()
         let dayOne = repository.fetch()
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
-        guard let tomorrowUnwrapped = tomorrow!.dateFormatToDate() else { return [dayOne[0]] }
-        let dayTwo = repository.fetchFilterDate(date: tomorrowUnwrapped)
-        let twoDaysLater = Calendar.current.date(byAdding: .day, value: 2, to: today)
-        guard let twoDaysLaterUnwrapped = twoDaysLater!.dateFormatToDate() else { return [dayOne[0]] }
-        let dayThree = repository.fetchFilterDate(date: twoDaysLaterUnwrapped)
-        let threeDaysLater = Calendar.current.date(byAdding: .day, value: 3, to: today)
-        guard let threeDaysLaterUnwrapped = threeDaysLater!.dateFormatToDate() else { return [dayOne[0]] }
-        let dayFour = repository.fetchFilterDate(date: threeDaysLaterUnwrapped)
-        let fourDaysLater = Calendar.current.date(byAdding: .day, value: 4, to: today)
-        guard let fourDaysLaterUnwrapped = fourDaysLater!.dateFormatToDate() else { return [dayOne[0]] }
-        let dayFive = repository.fetchFilterDate(date: fourDaysLaterUnwrapped)
+        let dayTwo = loadDayInfo(dayLater: 1)
+        let dayThree = loadDayInfo(dayLater: 2)
+        let dayFour = loadDayInfo(dayLater: 3)
+        let dayFive = loadDayInfo(dayLater: 4)
         
-        let result = [dayOne[0],dayTwo[0],dayThree[0],dayFour[0],dayFive[0]]
+        let result = [dayOne[0],dayTwo,dayThree,dayFour,dayFive]
         
         let cell = DayIntervalCollectionViewCell()
         cell.collectionView.reloadData()
 
         return result
     }
-   
-}
-
-extension MainViewModel {
-    enum requestStyle {
-        case userRequest
-        case firstRequest
+    
+    private func loadDayInfo(dayLater: Int) -> Forecast {
+        let today = Date()
+        let dayOne = repository.fetch()
+        let dayLater = Calendar.current.date(byAdding: .day, value: dayLater, to: today)
+        guard let dayLaterUnwrapped = dayLater!.dateFormatToDate() else { return dayOne[0] }
+        let otherDay = repository.fetchFilterDate(date: dayLaterUnwrapped)
+        return otherDay[0]
     }
+    
 }

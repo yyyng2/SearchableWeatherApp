@@ -29,6 +29,7 @@ import Foundation
 }
 
 enum keyEnum: String {
+    case isFirstLaunch = "isFirstLaunch"
     case userLat = "userLat"
     case userLon = "userLon"
     case lastUpdate = "lastUpdate"
@@ -47,9 +48,11 @@ enum keyEnum: String {
 }
 
 struct User {
-    @UserDefaultsHelper(key: keyEnum.userLat.rawValue, defaultValue: 36.783611)
+    @UserDefaultsHelper(key: keyEnum.isFirstLaunch.rawValue, defaultValue: true)
+    static var isFirstLaunch: Bool
+    @UserDefaultsHelper(key: keyEnum.userLat.rawValue, defaultValue: 37.5683)
     static var userLat: Double
-    @UserDefaultsHelper(key: keyEnum.userLon.rawValue, defaultValue: 127.004173)
+    @UserDefaultsHelper(key: keyEnum.userLon.rawValue, defaultValue: 126.9778)
     static var userLon: Double
     @UserDefaultsHelper(key: keyEnum.lastUpdate.rawValue, defaultValue: Date())
     static var lastUpdate: Date

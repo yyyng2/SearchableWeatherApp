@@ -12,8 +12,6 @@ import SwiftyJSON
 
 final class APIService {
     
-    private let repository = ForecastRepository()
-    
     internal func requestForecast(lat: Double, lon: Double, completionHandler: @escaping ([ForecastModel], [CurrentWeatherModel]) -> ()) {
 
         let api = WeatherAPI.reqeustForecast(lat: lat, lon: lon, appid: APIKey.openWeather, units: "metric")
@@ -22,9 +20,12 @@ final class APIService {
         User.userLon = lon
 
         AF.request(api.path, method: .get, parameters: api.parameters, encoding: URLEncoding(arrayEncoding: .noBrackets)).responseData(completionHandler: { response in
+            
+            let repository = ForecastRepository()
+            
             switch response.result {
             case .success(let value):
-                self.repository.deleteAll()
+                repository.deleteAll()
                 
                 var result: [ForecastModel] = []
                 
@@ -52,7 +53,7 @@ final class APIService {
                         result.append(ForecastModel(temp: temp, temp_min: temp_min, temp_max: temp_max, icon: icon.dropLast(1).description, dt_txt: date))
             
                         let task = Forecast(temp: temp, icon: icon.dropLast(1).description, date: date, temp_max: temp_max, temp_min: temp_min)
-                        self.repository.addRecord(record: task)
+                        repository.addRecord(record: task)
                       
                     }
                 }
@@ -90,7 +91,7 @@ final class APIService {
                 User.main = main
                 
                 
-                User.lastUpdate = result[0].dt_txt
+                User.lastUpdate = Date()
                 
                 completionHandler(result, currentWeather)
 
